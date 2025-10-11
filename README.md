@@ -101,13 +101,24 @@ function Dashboard() {
 
 ## 📚 Documentation
 
+### Quick Reference
+
+- **[Quick Start Guide](./docs/QUICKSTART.md)** - Essential commands and quick reference
+- **[Documentation Index](./docs/DOCS.md)** - Complete documentation navigation
+- **[Changelog](./docs/CHANGELOG.md)** - Version history and updates
+
 ### Specification Files
 
 This project includes comprehensive specification documents:
 
-- **[SPECIFICATION.short.md](./SPECIFICATION.short.md)** - Interview walkthrough document with visual design, states, and usage examples
-- **[SPECIFICATION.extended.md](./SPECIFICATION.extended.md)** - Detailed design-to-code mapping with Tailwind class references
-- **[SPECIFICATION.md](./SPECIFICATION.md)** - Complete technical specification with accessibility, testing, and deployment details
+- **[SPECIFICATION.short.md](./docs/SPECIFICATION.short.md)** - Interview walkthrough document with visual design, states, and usage examples
+- **[SPECIFICATION.extended.md](./docs/SPECIFICATION.extended.md)** - Detailed design-to-code mapping with Tailwind class references
+- **[SPECIFICATION.md](./docs/SPECIFICATION.md)** - Complete technical specification with accessibility, testing, and deployment details
+
+### Implementation & Verification
+
+- **[Implementation Guide](./docs/IMPLEMENTATION.md)** - Implementation summary and features
+- **[Verification Results](./docs/VERIFICATION.md)** - Test results and deployment readiness
 
 ### Design System
 
@@ -170,9 +181,16 @@ npm run test:ci
 ├── .storybook/
 │   ├── main.ts                   # Storybook configuration
 │   └── preview.ts                # Global decorators
-├── SPECIFICATION.short.md        # Interview walkthrough
-├── SPECIFICATION.extended.md     # Detailed mapping
-├── SPECIFICATION.md              # Complete technical spec
+├── docs/
+│   ├── SPECIFICATION.short.md    # Interview walkthrough
+│   ├── SPECIFICATION.extended.md # Detailed mapping
+│   ├── SPECIFICATION.md          # Complete technical spec
+│   ├── QUICKSTART.md             # Quick reference guide
+│   ├── IMPLEMENTATION.md         # Implementation details
+│   ├── VERIFICATION.md           # Test results
+│   ├── CHANGELOG.md              # Version history
+│   ├── DOCS.md                   # Documentation index
+│   └── UPDATE-SUMMARY.md         # Recent updates
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
@@ -332,7 +350,9 @@ MIT License - feel free to use this component in your projects.
 
 For questions or issues:
 
-- Review the [specification documents](./SPECIFICATION.md)
+- Review the [specification documents](./docs/SPECIFICATION.md)
+- Check the [documentation index](./docs/DOCS.md) for navigation
+- See [troubleshooting guide](./docs/QUICKSTART.md#️-troubleshooting)
 - Check [Storybook documentation](http://localhost:6006) (when running)
 - Open an issue on GitHub
 

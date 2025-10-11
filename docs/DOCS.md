@@ -7,7 +7,7 @@ Welcome to the Feature Flag Configuration Card project documentation!
 Start here if you're new to the project:
 
 1. **[QUICKSTART.md](./QUICKSTART.md)** - One-page quick reference with essential commands and tips
-2. **[README.md](./README.md)** - Comprehensive project documentation with setup instructions
+2. **[README.md](../README.md)** - Comprehensive project documentation with setup instructions
 
 ## 📋 Specifications
 
@@ -77,7 +77,7 @@ Interactive documentation available when running the project:
 
 ### For Development
 
-→ [README.md](./README.md) + [IMPLEMENTATION.md](./IMPLEMENTATION.md)
+→ [README.md](../README.md) + [IMPLEMENTATION.md](./IMPLEMENTATION.md)
 
 ### For Code Review
 
@@ -85,7 +85,7 @@ Interactive documentation available when running the project:
 
 ### For Deployment
 
-→ [README.md](./README.md#-vercel-deployment) + [VERIFICATION.md](./VERIFICATION.md)
+→ [README.md](../README.md#-vercel-deployment) + [VERIFICATION.md](./VERIFICATION.md)
 
 ### For Troubleshooting
 
@@ -94,16 +94,18 @@ Interactive documentation available when running the project:
 ## 📁 File Structure
 
 ```
-documentation/
-├── README.md                      # Main project documentation
-├── QUICKSTART.md                  # Quick reference card
-├── SPECIFICATION.short.md         # Interview walkthrough
-├── SPECIFICATION.extended.md      # Detailed design mapping
-├── SPECIFICATION.md               # Complete technical spec
-├── IMPLEMENTATION.md              # Implementation summary
-├── VERIFICATION.md                # Verification results
-├── CHANGELOG.md                   # Version history
-└── DOCS.md                        # This file
+project-root/
+├── README.md                      # Main project documentation (root level)
+└── docs/
+    ├── QUICKSTART.md              # Quick reference card
+    ├── SPECIFICATION.short.md     # Interview walkthrough
+    ├── SPECIFICATION.extended.md  # Detailed design mapping
+    ├── SPECIFICATION.md           # Complete technical spec
+    ├── IMPLEMENTATION.md          # Implementation summary
+    ├── VERIFICATION.md            # Verification results
+    ├── CHANGELOG.md               # Version history
+    ├── UPDATE-SUMMARY.md          # Recent updates
+    └── DOCS.md                    # This file
 
 code/
 ├── src/components/feature-flags/
@@ -125,57 +127,57 @@ config/
 
 ### Setup & Installation
 
-- [README.md - Quick Start](./README.md#-quick-start)
-- [README.md - Installation](./README.md#installation)
+- [README.md - Quick Start](../README.md#-quick-start)
+- [README.md - Installation](../README.md#installation)
 - [QUICKSTART.md - Essential Commands](./QUICKSTART.md#-essential-commands)
 
 ### Component Usage
 
-- [README.md - Component API](./README.md#-component-api)
+- [README.md - Component API](../README.md#-component-api)
 - [SPECIFICATION.short.md - Usage](./SPECIFICATION.short.md)
 - Storybook (run `npm run storybook`)
 
 ### Design System
 
 - [SPECIFICATION.extended.md - Design Mapping](./SPECIFICATION.extended.md)
-- [README.md - Design System](./README.md#design-system)
+- [README.md - Design System](../README.md#design-system)
 - [QUICKSTART.md - Design Reference](./QUICKSTART.md#-design-system-quick-reference)
 
 ### Testing
 
-- [README.md - Testing](./README.md#-testing)
+- [README.md - Testing](../README.md#-testing)
 - [VERIFICATION.md - Test Results](./VERIFICATION.md#-test-results)
 - [IMPLEMENTATION.md - Testing Coverage](./IMPLEMENTATION.md#-testing-coverage)
 
 ### Accessibility
 
-- [README.md - Accessibility Features](./README.md#accessibility-features)
+- [README.md - Accessibility Features](../README.md#accessibility-features)
 - [SPECIFICATION.md - Accessibility](./SPECIFICATION.md)
 - [VERIFICATION.md - Accessibility Tests](./VERIFICATION.md)
 
 ### Deployment
 
-- [README.md - Vercel Deployment](./README.md#-vercel-deployment)
+- [README.md - Vercel Deployment](../README.md#-vercel-deployment)
 - [VERIFICATION.md - Deployment Ready](./VERIFICATION.md#-ready-to-deploy)
 
 ### Troubleshooting
 
 - [CHANGELOG.md - Fixed Issues](./CHANGELOG.md#fixed)
 - [QUICKSTART.md - Troubleshooting](./QUICKSTART.md#️-troubleshooting)
-- [README.md - Troubleshooting](./README.md#-troubleshooting)
+- [README.md - Troubleshooting](../README.md#-troubleshooting)
 
 ### Version Compatibility
 
 - [CHANGELOG.md - Version Matrix](./CHANGELOG.md#version-compatibility-matrix)
 - [IMPLEMENTATION.md - Dependencies](./IMPLEMENTATION.md#-dependencies-summary)
-- [package.json](./package.json)
+- [package.json](../package.json)
 
 ## 📊 Documentation Stats
 
-- **Total Documentation Files**: 8
-- **Total Pages**: ~50+ pages of content
+- **Total Documentation Files**: 10
+- **Total Pages**: ~60+ pages of content
 - **Specification Documents**: 3 (short, extended, complete)
-- **Technical Docs**: 5 (README, implementation, verification, changelog, index)
+- **Technical Docs**: 7 (README at root + 6 in docs/)
 - **Last Updated**: 2025-10-11
 - **Status**: ✅ Complete and current
 
@@ -192,7 +194,7 @@ When updating documentation:
 ## 📞 Documentation Questions?
 
 - **Quick questions**: Check [QUICKSTART.md](./QUICKSTART.md)
-- **Setup issues**: See [README.md](./README.md#-troubleshooting)
+- **Setup issues**: See [README.md](../README.md#-troubleshooting)
 - **Bug fixes**: Review [CHANGELOG.md](./CHANGELOG.md#fixed)
 - **Not documented**: Open an issue on GitHub
 
