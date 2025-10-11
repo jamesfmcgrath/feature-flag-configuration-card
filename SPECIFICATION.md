@@ -38,11 +38,11 @@ This component manages the state and displays metadata for a single Feature Flag
 
 ### 2.2 Typography Specifications
 
-| Element         | Specification                        | Tailwind Classes           | Semantic HTML |
-| --------------- | ------------------------------------ | -------------------------- | ------------- |
-| **Flag Name**   | Extra large, bold weight             | `text-xl font-bold`        | `<h2>`        |
-| **Description** | Default size, gray-600 color         | `text-gray-600`            | `<p>`         |
-| **Badges**      | Extra small, contrasting backgrounds | `text-xs` + color variants | `<span>`      |
+| Element         | Specification                        | Tailwind Classes                         | Semantic HTML |
+| --------------- | ------------------------------------ | ---------------------------------------- | ------------- |
+| **Flag Name**   | Extra large, bold weight             | `text-xl font-bold`                      | `<h2>`        |
+| **Description** | Default size, gray-600 color         | `text-gray-600`                          | `<p>`         |
+| **Badges**      | Extra small, semibold/medium weights | `text-xs font-semibold` or `font-medium` | `<span>`      |
 
 ### 2.3 Color Palette
 
@@ -78,6 +78,8 @@ The component uses Tailwind's default breakpoint system with a mobile-first appr
 
 ### 3.2 Mobile Layout (< 768px)
 
+The card uses a **vertical stack** for the main content block.
+
 ```
 ┌─────────────────────────────────┐
 │  [Flag Name]                    │
@@ -91,29 +93,41 @@ The component uses Tailwind's default breakpoint system with a mobile-first appr
 
 **Implementation**:
 
-- Vertical stack using default flexbox direction
-- Full-width toggle switch
-- Stacked footer elements (`flex-col`)
+- Vertical stack using default flexbox direction for main content
+- Name/Description stacked vertically
+- Toggle switch full-width, left-aligned
+- Footer stacks vertically (`flex-col`)
 
 ### 3.3 Desktop Layout (≥ 768px)
+
+The content block transitions to a **3-column grid** (`md:grid-cols-3`).
 
 ```
 ┌─────────────────────────────────────────────────┐
 │  [Flag Name]                    [Toggle Switch] │
 │  [Description]                                  │
-│  ───────────────────────────────────────────── │
-│  [Status Badge]           [Warning Indicator]  │
+│  ─────────────────────────────────────────────  │
+│  [Status Badge]           [Warning Indicator]   │
 └─────────────────────────────────────────────────┘
 ```
 
 **Implementation**:
 
 - 3-column grid (`md:grid-cols-3`)
-- Name/Description spans 2 columns (`md:col-span-2`)
-- Toggle switch spans 1 column, right-aligned (`md:col-span-1`)
-- Horizontal footer layout (`sm:flex-row sm:justify-between`)
+- Name/Description: Spans 2 columns (`md:col-span-2`)
+- Toggle Switch: Aligned right, spans 1 column (`md:col-span-1`)
+- Horizontal footer layout (`sm:flex-row`)
 
-### 3.4 Responsive Class Mapping
+### 3.4 Footer Section
+
+The footer contains **status badges and warning indicators**. It must use a horizontal flex layout on desktop (`sm:flex-row`) and stack vertically on mobile (`flex-col`).
+
+**Implementation**:
+
+- Mobile: Vertical stack (`flex-col`)
+- Desktop: Horizontal layout (`sm:flex-row`)
+
+### 3.5 Responsive Class Mapping
 
 | Section          | Mobile Classes        | Desktop Classes                                  |
 | ---------------- | --------------------- | ------------------------------------------------ |
@@ -138,6 +152,8 @@ The component uses Tailwind's default breakpoint system with a mobile-first appr
 #### Implementation
 
 **HTML Structure**:
+
+Implemented as a native HTML `<button>` with `role="switch"` and `aria-checked` attributes to meet WAI-ARIA standards, ensuring robust accessibility.
 
 ```html
 <button
@@ -437,9 +453,89 @@ feature-flag-configuration-card/
 
 ---
 
-## 15. Appendix
+## 15. Interview Usage Guide
 
-### 15.1 Example Usage
+### 15.1 Recommended Approach
+
+This specification document is designed to be used as a discussion tool during technical interviews or code reviews.
+
+#### Step 1: Start with the Design Spec
+
+**Opening Statement**:
+
+> "I built this Feature Flag Card to showcase my design-to-code process. Here is the design specification I worked from."
+
+**Action**: Share this markdown file or a screenshot of Section 2 (Visual Specifications).
+
+#### Step 2: Transition to Code
+
+**Transition Statement**:
+
+> "Now, let's look at how I translated these specific requirements into the live React component..."
+
+**Action**: Open the `FeatureFlagCard.tsx` file and reference specific implementations.
+
+#### Step 3: Drive the Discussion
+
+Use the specification sections as talking points, referencing the specific Tailwind classes in the `FeatureFlagCard.tsx` that implemented each rule.
+
+**Example Discussion Points**:
+
+1. **Visual Fidelity (Section 2)**:
+
+   - "For the container, I used `bg-white shadow-xl rounded-xl` to achieve high visibility and elevation."
+   - "The active state uses `border-l-4 border-indigo-500` for clear visual indication."
+
+2. **Responsive Design (Section 3)**:
+
+   - "I implemented a mobile-first strategy where the card defaults to a vertical stack..."
+   - "On desktop, it transitions to a 3-column grid using `md:grid-cols-3`."
+
+3. **Accessibility (Section 4 & 5)**:
+
+   - "The toggle switch is a native `<button>` with `role='switch'` and `aria-checked` for WAI-ARIA compliance."
+   - "Full keyboard navigation is supported with Space/Enter keys."
+
+4. **Code Quality (Section 7 & 11)**:
+   - "I use derived state to manage the border color based on `isEnabled`."
+   - "TypeScript provides type safety for all props and state."
+
+### 15.2 Key Talking Points by Section
+
+| Section         | Discussion Point                           | Code Reference                     |
+| --------------- | ------------------------------------------ | ---------------------------------- |
+| **Section 2.1** | Visual specifications and Tailwind mapping | Container classes, border states   |
+| **Section 3**   | Mobile-first responsive strategy           | Grid transitions, breakpoints      |
+| **Section 4.1** | Toggle switch accessibility                | ARIA attributes, keyboard handlers |
+| **Section 4.2** | Conditional rendering logic                | Warning indicator visibility       |
+| **Section 6**   | TypeScript props API                       | Interface definition, prop types   |
+| **Section 7**   | State management patterns                  | Derived state, event handlers      |
+
+### 15.3 Demo Scenarios
+
+#### Scenario 1: Show Responsive Behavior
+
+1. Open browser DevTools
+2. Toggle device toolbar
+3. Resize from mobile to desktop
+4. Point out layout transitions at 768px and 640px breakpoints
+
+#### Scenario 2: Demonstrate Accessibility
+
+1. Use keyboard only (Tab, Space, Enter)
+2. Navigate to toggle switch
+3. Toggle the switch with keyboard
+4. Show focus indicators
+
+#### Scenario 3: Explain State Logic
+
+1. Show warning indicator logic (Section 4.2)
+2. Explain conditional rendering
+3. Toggle between states to demonstrate
+
+## 16. Appendix
+
+### 16.1 Example Usage
 
 ```tsx
 import { FeatureFlagCard } from './FeatureFlagCard';
@@ -464,7 +560,7 @@ function Dashboard() {
 }
 ```
 
-### 15.2 Design Tokens
+### 16.2 Design Tokens
 
 ```javascript
 // tailwind.config.js
