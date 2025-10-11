@@ -1,11 +1,11 @@
 # Feature Flag Configuration Card
 
-A production-ready, accessible React component for managing feature flag states in SaaS dashboards. Built with Next.js 14, TypeScript, Tailwind CSS, and Storybook.
+A production-ready, accessible React component for managing feature flag states in SaaS dashboards. Built with Next.js 15, TypeScript, Tailwind CSS, and Storybook.
 
-![Next.js](https://img.shields.io/badge/Next.js-14+-black)
+![Next.js](https://img.shields.io/badge/Next.js-15+-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4+-38bdf8)
-![Storybook](https://img.shields.io/badge/Storybook-8.0+-ff4785)
+![Storybook](https://img.shields.io/badge/Storybook-8.4-ff4785)
 
 ## 📋 Overview
 
@@ -101,24 +101,15 @@ function Dashboard() {
 
 ## 📚 Documentation
 
-### Quick Reference
+See the **[docs/](./docs/)** directory for complete documentation.
 
-- **[Quick Start Guide](./docs/QUICKSTART.md)** - Essential commands and quick reference
-- **[Documentation Index](./docs/DOCS.md)** - Complete documentation navigation
-- **[Changelog](./docs/CHANGELOG.md)** - Version history and updates
+### Quick Links
 
-### Specification Files
-
-This project includes comprehensive specification documents:
-
-- **[SPECIFICATION.short.md](./docs/SPECIFICATION.short.md)** - Interview walkthrough document with visual design, states, and usage examples
-- **[SPECIFICATION.extended.md](./docs/SPECIFICATION.extended.md)** - Detailed design-to-code mapping with Tailwind class references
-- **[SPECIFICATION.md](./docs/SPECIFICATION.md)** - Complete technical specification with accessibility, testing, and deployment details
-
-### Implementation & Verification
-
-- **[Implementation Guide](./docs/IMPLEMENTATION.md)** - Implementation summary and features
-- **[Verification Results](./docs/VERIFICATION.md)** - Test results and deployment readiness
+- **[QUICKSTART.md](./docs/QUICKSTART.md)** - Commands, tips, and troubleshooting
+- **[SPECIFICATION.short.md](./docs/SPECIFICATION.short.md)** - Interview walkthrough (1 page)
+- **[SPECIFICATION.extended.md](./docs/SPECIFICATION.extended.md)** - Design-to-code mapping
+- **[SPECIFICATION.md](./docs/SPECIFICATION.md)** - Complete technical specification
+- **[CHANGELOG.md](./docs/CHANGELOG.md)** - Version history and compatibility
 
 ### Design System
 
@@ -182,15 +173,12 @@ npm run test:ci
 │   ├── main.ts                   # Storybook configuration
 │   └── preview.ts                # Global decorators
 ├── docs/
+│   ├── README.md                 # Documentation index
+│   ├── QUICKSTART.md             # Quick reference guide
 │   ├── SPECIFICATION.short.md    # Interview walkthrough
 │   ├── SPECIFICATION.extended.md # Detailed mapping
 │   ├── SPECIFICATION.md          # Complete technical spec
-│   ├── QUICKSTART.md             # Quick reference guide
-│   ├── IMPLEMENTATION.md         # Implementation details
-│   ├── VERIFICATION.md           # Test results
-│   ├── CHANGELOG.md              # Version history
-│   ├── DOCS.md                   # Documentation index
-│   └── UPDATE-SUMMARY.md         # Recent updates
+│   └── CHANGELOG.md              # Version history
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
@@ -350,9 +338,8 @@ MIT License - feel free to use this component in your projects.
 
 For questions or issues:
 
-- Review the [specification documents](./docs/SPECIFICATION.md)
-- Check the [documentation index](./docs/DOCS.md) for navigation
-- See [troubleshooting guide](./docs/QUICKSTART.md#️-troubleshooting)
+- Review the [documentation](./docs/) directory
+- See [troubleshooting guide](./docs/QUICKSTART.md#-troubleshooting)
 - Check [Storybook documentation](http://localhost:6006) (when running)
 - Open an issue on GitHub
 
