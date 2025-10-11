@@ -35,6 +35,9 @@ yarn-error.log*
 
 # Storybook
 storybook-static
+# Storybook built to public/storybook is managed by build process
+# but exclude from git since it's generated
+public/storybook
 
 # TypeScript
 *.tsbuildinfo

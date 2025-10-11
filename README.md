@@ -188,39 +188,26 @@ npm run test:ci
 
 ## 🚢 Vercel Deployment
 
-This project is optimized for Vercel deployment.
+This project is optimized for Vercel deployment with both the Next.js app and Storybook accessible from a single deployment.
 
-### Option 1: GitHub Integration (Recommended)
+**📘 See [docs/VERCEL-DEPLOYMENT.md](./docs/VERCEL-DEPLOYMENT.md) for comprehensive deployment guide**
+
+### Quick Deploy
 
 1. Push your code to GitHub
 2. Import project in [Vercel Dashboard](https://vercel.com/dashboard)
-3. Vercel will auto-detect Next.js and deploy
+3. Vercel auto-detects Next.js and deploys both app and Storybook
 
-### Option 2: Vercel CLI
+### Accessing Your Deployment
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
+After deployment:
 
-# Deploy
-vercel
-
-# Deploy to production
-vercel --prod
-```
+- **Main App**: `https://your-project.vercel.app/`
+- **Storybook**: `https://your-project.vercel.app/storybook`
 
 ### Environment Setup
 
 No environment variables required for the demo. The component works out of the box.
-
-### Build Configuration
-
-The project uses Next.js 15 with App Router. Vercel automatically:
-
-- Detects Next.js framework
-- Installs dependencies with npm
-- Builds with `npm run build`
-- Deploys optimized static and server assets
 
 ## 🎯 Design Decisions
 
