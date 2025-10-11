@@ -263,19 +263,23 @@ npm run build-storybook  # Build static Storybook
 
 ### Production (4)
 
-- `next` - Framework
+- `next@15` - Framework (upgraded for Storybook compatibility)
 - `react` & `react-dom` - UI library
 - `clsx` - Utility for conditional classes
 
 ### Development (27)
 
-- Storybook ecosystem (8 packages)
+- Storybook ecosystem v8.4.7 (8 packages) - Pinned for Next.js 15 compatibility
 - Testing Library (3 packages)
 - TypeScript & types (5 packages)
 - Build tools (Tailwind, PostCSS, etc.)
 - Code quality (ESLint, Prettier)
 
 **Total Install Size**: ~260MB (typical for modern React toolchain)
+
+### Version Compatibility Note
+
+This project uses **Storybook 8.4.7** specifically for compatibility with **Next.js 15**. Newer versions of Storybook (8.6+) may have webpack bundling conflicts with Next.js's internal webpack configuration. If you encounter errors like "Cannot read properties of undefined (reading 'tap')", ensure you're using the versions specified in `package.json`.
 
 ---
 

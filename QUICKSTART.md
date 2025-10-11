@@ -49,9 +49,9 @@ vercel                   # Deploy to Vercel
 
 ## ✅ Verification Checklist
 
-- [x] `npm install` - Dependencies installed
-- [x] `npm run dev` - Next.js runs on :3000
-- [x] `npm run storybook` - Storybook runs on :6006
+- [x] `npm install` - Dependencies installed (1157 packages)
+- [x] `npm run dev` - Next.js 15 runs on :3000
+- [x] `npm run storybook` - Storybook 8.4.7 runs on :6006
 - [x] `npm test` - All 27 tests pass
 - [x] `npm run build` - Production build succeeds
 - [x] `npm run lint` - No ESLint errors
@@ -61,6 +61,7 @@ vercel                   # Deploy to Vercel
 - [x] Responsive on mobile and desktop
 - [x] Focus indicators visible
 - [x] Ready for Vercel deployment
+- [x] Version compatibility verified (Next.js 15 + Storybook 8.4.7)
 
 ## 🎨 Design System Quick Reference
 
@@ -132,8 +133,34 @@ vercel --prod
 - Vercel-optimized, deploys in 1 command
 - Code is production-ready, not a prototype
 
+## ⚠️ Troubleshooting
+
+### Storybook Webpack Errors
+
+If you see webpack errors like "Cannot read properties of undefined (reading 'tap')":
+
+```bash
+# Verify correct versions are installed
+npm list storybook @storybook/nextjs
+
+# Should show:
+# storybook@8.4.7
+# @storybook/nextjs@8.4.7
+```
+
+The project uses **Storybook 8.4.7** for compatibility with **Next.js 15**. Do not upgrade Storybook beyond 8.4.x without testing compatibility.
+
+### Missing Public Directory
+
+If Storybook fails with "no such directory: ./public":
+
+```bash
+mkdir public
+```
+
 ---
 
 **Status**: ✅ All systems go!
 **Time to deploy**: < 5 minutes
 **Quality**: Production-ready
+**Compatibility**: Verified Next.js 15 + Storybook 8.4.7

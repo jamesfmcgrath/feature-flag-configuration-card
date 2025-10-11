@@ -22,16 +22,16 @@ This project demonstrates high-fidelity translation of design specifications int
 ### Prerequisites
 
 - Node.js 18+
-- pnpm (recommended) or npm/yarn
+- npm, pnpm, or yarn
 
 ### Installation
 
 ```bash
 # Install dependencies
-pnpm install
+npm install
 
 # Start development server
-pnpm dev
+npm run dev
 
 # Open http://localhost:3000
 ```
@@ -40,25 +40,27 @@ pnpm dev
 
 ```bash
 # Run Storybook
-pnpm storybook
+npm run storybook
 
 # Open http://localhost:6006
 ```
 
+> **Note**: This project uses Storybook 8.4.7 for compatibility with Next.js 15. If you encounter webpack errors, ensure you're using the correct versions specified in `package.json`.
+
 ## 📚 Available Commands
 
-| Command                | Description                                   |
-| ---------------------- | --------------------------------------------- |
-| `pnpm dev`             | Start Next.js development server on port 3000 |
-| `pnpm build`           | Build production application                  |
-| `pnpm start`           | Start production server                       |
-| `pnpm lint`            | Run ESLint                                    |
-| `pnpm format`          | Format code with Prettier                     |
-| `pnpm format:check`    | Check code formatting                         |
-| `pnpm test`            | Run tests in watch mode                       |
-| `pnpm test:ci`         | Run tests in CI mode                          |
-| `pnpm storybook`       | Start Storybook on port 6006                  |
-| `pnpm build-storybook` | Build static Storybook                        |
+| Command                   | Description                                   |
+| ------------------------- | --------------------------------------------- |
+| `npm run dev`             | Start Next.js development server on port 3000 |
+| `npm run build`           | Build production application                  |
+| `npm run start`           | Start production server                       |
+| `npm run lint`            | Run ESLint                                    |
+| `npm run format`          | Format code with Prettier                     |
+| `npm run format:check`    | Check code formatting                         |
+| `npm test`                | Run tests in watch mode                       |
+| `npm run test:ci`         | Run tests in CI mode                          |
+| `npm run storybook`       | Start Storybook on port 6006                  |
+| `npm run build-storybook` | Build static Storybook                        |
 
 ## 🎨 Component API
 
@@ -145,10 +147,10 @@ The component includes comprehensive tests covering:
 
 ```bash
 # Run tests
-pnpm test
+npm test
 
 # Run tests in CI mode
-pnpm test:ci
+npm run test:ci
 ```
 
 ## 🏗️ Project Structure
@@ -207,21 +209,21 @@ No environment variables required for the demo. The component works out of the b
 
 ### Build Configuration
 
-The project uses Next.js 14 with App Router. Vercel automatically:
+The project uses Next.js 15 with App Router. Vercel automatically:
 
 - Detects Next.js framework
-- Installs dependencies with pnpm
-- Builds with `pnpm build`
+- Installs dependencies with npm
+- Builds with `npm run build`
 - Deploys optimized static and server assets
 
 ## 🎯 Design Decisions
 
 ### Why These Technologies?
 
-- **Next.js 14**: Modern React framework with App Router for optimal performance
+- **Next.js 15**: Modern React framework with App Router for optimal performance
 - **TypeScript**: Type safety and better developer experience
 - **Tailwind CSS**: Utility-first CSS for rapid development and consistent design
-- **Storybook 8**: Component documentation and visual testing
+- **Storybook 8.4**: Component documentation and visual testing
 - **Jest + RTL**: Industry-standard testing tools for React
 
 ### Component Architecture
@@ -265,11 +267,25 @@ The component uses Tailwind classes throughout. To customize:
 
 ```bash
 # Run tests in watch mode while developing
-pnpm test
+npm test
 
 # Check accessibility
 # Tests include ARIA attribute validation
 ```
+
+## 🔧 Troubleshooting
+
+### Storybook Webpack Errors
+
+If you encounter webpack compilation errors when running Storybook, ensure you're using the correct package versions:
+
+```bash
+# Reinstall dependencies with correct versions
+rm -rf node_modules package-lock.json
+npm install
+```
+
+The project uses Storybook 8.4.7 for compatibility with Next.js 15. Auto-upgrading to newer Storybook versions may cause webpack bundling conflicts.
 
 ## 📦 Dependencies
 
