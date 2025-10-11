@@ -57,6 +57,14 @@ const config: StorybookConfig = {
 };
 ```
 
+### .storybook/manager-head.html
+
+```html
+<base href="/storybook/" />
+```
+
+> **Critical**: This tells Storybook to load its assets from `/storybook/` instead of the root path.
+
 ### vercel.json
 
 ```json
@@ -153,9 +161,23 @@ No environment variables are required for this setup. Both the app and Storybook
 
 ## 🐛 Troubleshooting
 
-### Blank Page at /storybook
+### Blank Page or 404 Errors for Assets
 
-**Issue**: Visiting `/storybook` shows a blank page or doesn't load
+**Issue**: Storybook loads but shows blank page, or console shows 404 errors for `/sb-addons/...`, `/sb-manager/...` files
+
+**Cause**: Storybook assets are being requested from root (`/sb-addons/`) instead of `/storybook/sb-addons/`
+
+**Solution**: Create `.storybook/manager-head.html` with base href:
+
+```html
+<base href="/storybook/" />
+```
+
+This tells Storybook's HTML to load all assets relative to `/storybook/` instead of root.
+
+### Build Not Running on Vercel
+
+**Issue**: Vercel builds Next.js but Storybook files are missing
 **Cause**: Vercel's Next.js auto-detection may skip the Storybook build step
 **Solution**: Add `vercel.json` to explicitly set the build command
 
@@ -167,15 +189,15 @@ No environment variables are required for this setup. Both the app and Storybook
 }
 ```
 
-After adding this file:
+After adding these files:
 
 ```bash
-git add vercel.json
-git commit -m "Add Vercel build configuration"
+git add vercel.json .storybook/manager-head.html
+git commit -m "Fix Vercel Storybook deployment"
 git push origin main
 ```
 
-Vercel will rebuild and use the correct build process.
+Vercel will rebuild with the correct configuration.
 
 ### Storybook Returns 404
 
