@@ -28,17 +28,17 @@ Welcome to the Feature Flag Configuration Card documentation!
 
 ## 🎯 Where to Start
 
-| Your Goal                | Start Here                                               |
-| ------------------------ | -------------------------------------------------------- |
-| **New to the project?**  | [QUICKSTART.md](./QUICKSTART.md)                         |
-| **Setup instructions?**  | [Main README](../README.md)                              |
-| **Interview prep?**      | [SPECIFICATION.short.md](./SPECIFICATION.short.md)       |
-| **Code review?**         | [SPECIFICATION.extended.md](./SPECIFICATION.extended.md) |
-| **Technical deep dive?** | [SPECIFICATION.md](./SPECIFICATION.md)                   |
-| **Version info?**        | [CHANGELOG.md](./CHANGELOG.md)                                     |
-| **Deploy to Vercel?**    | [VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md)                     |
-| **Accessibility audit?** | [ACCESSIBILITY-IMPROVEMENTS.md](./ACCESSIBILITY-IMPROVEMENTS.md)   |
-| **Troubleshooting?**     | [QUICKSTART.md](./QUICKSTART.md#-troubleshooting)                  |
+| Your Goal                | Start Here                                                       |
+| ------------------------ | ---------------------------------------------------------------- |
+| **New to the project?**  | [QUICKSTART.md](./QUICKSTART.md)                                 |
+| **Setup instructions?**  | [Main README](../README.md)                                      |
+| **Interview prep?**      | [SPECIFICATION.short.md](./SPECIFICATION.short.md)               |
+| **Code review?**         | [SPECIFICATION.extended.md](./SPECIFICATION.extended.md)         |
+| **Technical deep dive?** | [SPECIFICATION.md](./SPECIFICATION.md)                           |
+| **Version info?**        | [CHANGELOG.md](./CHANGELOG.md)                                   |
+| **Deploy to Vercel?**    | [VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md)                   |
+| **Accessibility audit?** | [ACCESSIBILITY-IMPROVEMENTS.md](./ACCESSIBILITY-IMPROVEMENTS.md) |
+| **Troubleshooting?**     | [QUICKSTART.md](./QUICKSTART.md#-troubleshooting)                |
 
 ---
 
