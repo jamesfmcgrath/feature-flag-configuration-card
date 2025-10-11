@@ -57,6 +57,18 @@ const config: StorybookConfig = {
 };
 ```
 
+### vercel.json
+
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install"
+}
+```
+
+> **Important**: This file ensures Vercel uses our custom build script that builds Storybook first, then Next.js.
+
 ## 🚀 Deployment Steps
 
 ### Option 1: GitHub Integration (Recommended)
@@ -140,6 +152,30 @@ public/
 No environment variables are required for this setup. Both the app and Storybook work out of the box.
 
 ## 🐛 Troubleshooting
+
+### Blank Page at /storybook
+
+**Issue**: Visiting `/storybook` shows a blank page or doesn't load
+**Cause**: Vercel's Next.js auto-detection may skip the Storybook build step
+**Solution**: Add `vercel.json` to explicitly set the build command
+
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install"
+}
+```
+
+After adding this file:
+
+```bash
+git add vercel.json
+git commit -m "Add Vercel build configuration"
+git push origin main
+```
+
+Vercel will rebuild and use the correct build process.
 
 ### Storybook Returns 404
 
