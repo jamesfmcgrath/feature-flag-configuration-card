@@ -89,17 +89,19 @@ export function FeatureFlagCard({
       {/* Main content grid - responsive layout */}
       <div className="grid grid-cols-1 md:grid-cols-[auto,1fr,auto] gap-4 md:items-center">
         {/* Text content */}
-        <div className="space-y-1 md:col-span-2 min-w-0">
+        <div className="space-y-2 md:col-span-2 min-w-0">
           <h3
             className={clsx(
-              'text-base font-semibold truncate',
-              active ? 'text-gray-900' : 'text-gray-500'
+              'text-base font-semibold truncate leading-relaxed',
+              active ? 'text-gray-900' : 'text-gray-700'
             )}
           >
             {name}
           </h3>
           {description && (
-            <p className="text-sm text-gray-600 line-clamp-2">{description}</p>
+            <p className="text-sm text-gray-700 line-clamp-2 leading-relaxed">
+              {description}
+            </p>
           )}
         </div>
 
@@ -113,13 +115,13 @@ export function FeatureFlagCard({
             onClick={handleToggle}
             onKeyDown={handleKeyDown}
             className={clsx(
-              // Base styles
-              'relative inline-flex h-6 w-11 items-center rounded-full',
+              // Base styles - Enhanced size for accessibility (44px height)
+              'relative inline-flex h-11 w-20 items-center rounded-full',
               'transition-colors duration-150 ease-in-out',
-              // Focus styles
-              'focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2',
-              // Background color based on state
-              active ? 'bg-indigo-600' : 'bg-gray-200',
+              // Focus styles - Enhanced contrast
+              'focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-offset-2',
+              // Background color based on state - Enhanced contrast
+              active ? 'bg-indigo-700' : 'bg-gray-400',
               // Hover styles
               'hover:opacity-90'
             )}
@@ -127,13 +129,13 @@ export function FeatureFlagCard({
             <span className="sr-only">
               {active ? 'Disable' : 'Enable'} {name}
             </span>
-            {/* Toggle thumb */}
+            {/* Toggle thumb - Larger for better visibility */}
             <span
               className={clsx(
-                'inline-block h-4 w-4 rounded-full bg-white',
+                'inline-block h-8 w-8 rounded-full bg-white',
                 'transition-transform duration-150 ease-in-out',
-                'shadow-sm',
-                active ? 'translate-x-6' : 'translate-x-1'
+                'shadow-md',
+                active ? 'translate-x-10' : 'translate-x-1.5'
               )}
             />
           </button>
@@ -142,11 +144,11 @@ export function FeatureFlagCard({
 
       {/* Metadata footer - only show if dates exist */}
       {(createdAt || updatedAt) && (
-        <div className="mt-4 pt-4 border-t border-gray-100">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 text-sm text-gray-500">
+        <div className="mt-4 pt-4 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 text-sm text-gray-700 leading-relaxed">
             {createdAt && (
               <div className="flex items-center gap-1">
-                <span className="font-medium">Created:</span>
+                <span className="font-semibold">Created:</span>
                 <time dateTime={new Date(createdAt).toISOString()}>
                   {formatDate(createdAt)}
                 </time>
@@ -154,7 +156,7 @@ export function FeatureFlagCard({
             )}
             {updatedAt && (
               <div className="flex items-center gap-1">
-                <span className="font-medium">Updated:</span>
+                <span className="font-semibold">Updated:</span>
                 <time dateTime={new Date(updatedAt).toISOString()}>
                   {formatDate(updatedAt)}
                 </time>
@@ -168,8 +170,8 @@ export function FeatureFlagCard({
       <div className="mt-3">
         <span
           className={clsx(
-            'inline-flex items-center px-2.5 py-0.5 rounded text-xs font-semibold',
-            active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+            'inline-flex items-center px-3 py-1 rounded text-sm font-bold leading-relaxed',
+            active ? 'bg-green-700 text-white' : 'bg-gray-700 text-white'
           )}
         >
           {active ? 'Active' : 'Inactive'}

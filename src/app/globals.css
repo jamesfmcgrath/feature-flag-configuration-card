@@ -18,6 +18,15 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6; /* WCAG AAA compliance: minimum 1.5, using 1.6 for better readability */
+}
+
+/* Ensure all text elements meet minimum line-height requirements */
+p,
+li,
+span,
+div {
+  line-height: 1.6;
 }
 
 @layer utilities {

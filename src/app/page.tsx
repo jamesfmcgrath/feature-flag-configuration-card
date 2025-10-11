@@ -17,19 +17,21 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12 px-4">
+    <main id="main-content" className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-4xl mx-auto space-y-8">
-        <header className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-gray-900">
+        <header className="text-center space-y-3">
+          <h1 className="text-4xl font-bold text-gray-900 leading-tight">
             Feature Flag Configuration Card
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-800 leading-relaxed">
             Production-ready component demonstration
           </p>
         </header>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-900">Active Flags</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 leading-tight">
+            Active Flags
+          </h2>
 
           <FeatureFlagCard
             name="User Onboarding Flow"
@@ -51,7 +53,7 @@ export default function Home() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-900">
+          <h2 className="text-2xl font-semibold text-gray-900 leading-tight">
             Inactive Flags
           </h2>
 
@@ -72,7 +74,9 @@ export default function Home() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-900">Edge Cases</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 leading-tight">
+            Edge Cases
+          </h2>
 
           <FeatureFlagCard
             name="Super Long Feature Flag Name That Demonstrates Text Truncation Behavior When The Name Exceeds Container Width"

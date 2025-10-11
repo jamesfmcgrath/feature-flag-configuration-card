@@ -18,6 +18,7 @@ Welcome to the Feature Flag Configuration Card documentation!
 
 - **[CHANGELOG.md](./CHANGELOG.md)** - Version history and compatibility notes
 - **[VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md)** - Deploy app + Storybook to Vercel
+- **[ACCESSIBILITY-IMPROVEMENTS.md](./ACCESSIBILITY-IMPROVEMENTS.md)** - WCAG AAA compliance fixes
 
 ## 🚀 Quick Links
 
@@ -34,9 +35,10 @@ Welcome to the Feature Flag Configuration Card documentation!
 | **Interview prep?**      | [SPECIFICATION.short.md](./SPECIFICATION.short.md)       |
 | **Code review?**         | [SPECIFICATION.extended.md](./SPECIFICATION.extended.md) |
 | **Technical deep dive?** | [SPECIFICATION.md](./SPECIFICATION.md)                   |
-| **Version info?**        | [CHANGELOG.md](./CHANGELOG.md)                           |
-| **Deploy to Vercel?**    | [VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md)           |
-| **Troubleshooting?**     | [QUICKSTART.md](./QUICKSTART.md#-troubleshooting)        |
+| **Version info?**        | [CHANGELOG.md](./CHANGELOG.md)                                     |
+| **Deploy to Vercel?**    | [VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md)                     |
+| **Accessibility audit?** | [ACCESSIBILITY-IMPROVEMENTS.md](./ACCESSIBILITY-IMPROVEMENTS.md)   |
+| **Troubleshooting?**     | [QUICKSTART.md](./QUICKSTART.md#-troubleshooting)                  |
 
 ---
 
