@@ -234,7 +234,7 @@ describe('FeatureFlagCard', () => {
         <FeatureFlagCard {...defaultProps} active={true} />
       );
       const article = container.querySelector('article');
-      expect(article).toHaveClass('border-indigo-500');
+      expect(article).toHaveClass('border-indigo-600');
     });
 
     it('applies inactive border color when flag is inactive', () => {
@@ -242,7 +242,7 @@ describe('FeatureFlagCard', () => {
         <FeatureFlagCard {...defaultProps} active={false} />
       );
       const article = container.querySelector('article');
-      expect(article).toHaveClass('border-gray-200');
+      expect(article).toHaveClass('border-gray-400');
     });
 
     it('applies custom className when provided', () => {

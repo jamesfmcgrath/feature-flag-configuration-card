@@ -75,9 +75,9 @@ export function FeatureFlagCard({
       className={clsx(
         // Container styles
         'bg-white shadow-xl rounded-xl',
-        // Border accent based on state
+        // Border accent based on state - Enhanced contrast
         'border-l-4',
-        active ? 'border-indigo-500' : 'border-gray-200',
+        active ? 'border-indigo-600' : 'border-gray-400',
         // Padding with responsive scaling
         'p-4 md:p-6',
         // Smooth transitions
@@ -115,13 +115,13 @@ export function FeatureFlagCard({
             onClick={handleToggle}
             onKeyDown={handleKeyDown}
             className={clsx(
-              // Base styles - Enhanced size for accessibility (44px height)
-              'relative inline-flex h-11 w-20 items-center rounded-full',
+              // Base styles - Balanced size for accessibility (36px height)
+              'relative inline-flex h-9 w-16 items-center rounded-full',
               'transition-colors duration-150 ease-in-out',
-              // Focus styles - Enhanced contrast
-              'focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:ring-offset-2',
-              // Background color based on state - Enhanced contrast
-              active ? 'bg-indigo-700' : 'bg-gray-400',
+              // Focus styles - High visibility
+              'focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2',
+              // Background color based on state - AAA contrast
+              active ? 'bg-indigo-700' : 'bg-gray-600',
               // Hover styles
               'hover:opacity-90'
             )}
@@ -129,13 +129,13 @@ export function FeatureFlagCard({
             <span className="sr-only">
               {active ? 'Disable' : 'Enable'} {name}
             </span>
-            {/* Toggle thumb - Larger for better visibility */}
+            {/* Toggle thumb */}
             <span
               className={clsx(
-                'inline-block h-8 w-8 rounded-full bg-white',
+                'inline-block h-6 w-6 rounded-full bg-white',
                 'transition-transform duration-150 ease-in-out',
                 'shadow-md',
-                active ? 'translate-x-10' : 'translate-x-1.5'
+                active ? 'translate-x-8' : 'translate-x-1.5'
               )}
             />
           </button>
