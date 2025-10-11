@@ -559,17 +559,14 @@ Use the specification sections as talking points, referencing the specific Tailw
 **Example Discussion Points**:
 
 1. **Visual Fidelity (Section 2)**:
-
    - "For the container, I used `bg-white shadow-xl rounded-xl` to achieve high visibility and elevation."
    - "The active state uses `border-l-4 border-indigo-500` for clear visual indication."
 
 2. **Responsive Design (Section 3)**:
-
    - "I implemented a mobile-first strategy where the card defaults to a vertical stack..."
    - "On desktop, it transitions to a 3-column grid using `md:grid-cols-3`."
 
 3. **Accessibility (Section 4 & 5)**:
-
    - "The toggle switch is a native `<button>` with `role='switch'` and `aria-checked` for WAI-ARIA compliance."
    - "Full keyboard navigation is supported with Space/Enter keys."
 

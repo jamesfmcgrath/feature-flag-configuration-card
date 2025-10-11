@@ -1,60 +1,97 @@
 # Feature Flag Configuration Card
 
-A production-ready, accessible React component for managing feature flag states in SaaS dashboards.
+A production-ready, accessible React component for managing feature flag states in SaaS dashboards. Built with Next.js 14, TypeScript, Tailwind CSS, and Storybook.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/react-18.0%2B-blue.svg)
-![TypeScript](https://img.shields.io/badge/typescript-5.0%2B-blue.svg)
-![Tailwind CSS](https://img.shields.io/badge/tailwind-3.4%2B-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-14+-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4+-38bdf8)
+![Storybook](https://img.shields.io/badge/Storybook-8.0+-ff4785)
 
 ## 📋 Overview
 
-The Feature Flag Configuration Card is a highly responsive and accessible UI component that displays and manages feature flag metadata. Built with React, TypeScript, and Tailwind CSS, it demonstrates production-ready code with pixel-perfect design implementation.
+This project demonstrates high-fidelity translation of design specifications into production-ready code. The Feature Flag Configuration Card component showcases:
 
-### ✨ Key Features
-
-- 🎨 **Production-Ready Design**: Pixel-perfect implementation with Tailwind CSS
-- ♿ **WCAG 2.1 AA Compliant**: Full keyboard navigation and screen reader support
-- 📱 **Fully Responsive**: Mobile-first design that adapts seamlessly to all screen sizes
-- ⚡ **Performance Optimized**: Lightweight component with minimal re-renders
-- 🔧 **TypeScript Support**: Fully typed for enhanced developer experience
-- 🧪 **Well Tested**: Comprehensive unit and integration tests
+- **Design System Fidelity**: Pixel-perfect implementation matching design specifications
+- **Accessibility**: WCAG 2.1 AA compliant with full keyboard navigation
+- **Responsiveness**: Mobile-first design that adapts seamlessly across viewports
+- **Testing**: Comprehensive Jest + React Testing Library tests
+- **Documentation**: Interactive Storybook playground with controls
 
 ## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm/yarn
 
 ### Installation
 
 ```bash
-npm install feature-flag-configuration-card
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Open http://localhost:3000
 ```
 
-or
+### Storybook
 
 ```bash
-yarn add feature-flag-configuration-card
+# Run Storybook
+pnpm storybook
+
+# Open http://localhost:6006
 ```
 
-### Basic Usage
+## 📚 Available Commands
+
+| Command                | Description                                   |
+| ---------------------- | --------------------------------------------- |
+| `pnpm dev`             | Start Next.js development server on port 3000 |
+| `pnpm build`           | Build production application                  |
+| `pnpm start`           | Start production server                       |
+| `pnpm lint`            | Run ESLint                                    |
+| `pnpm format`          | Format code with Prettier                     |
+| `pnpm format:check`    | Check code formatting                         |
+| `pnpm test`            | Run tests in watch mode                       |
+| `pnpm test:ci`         | Run tests in CI mode                          |
+| `pnpm storybook`       | Start Storybook on port 6006                  |
+| `pnpm build-storybook` | Build static Storybook                        |
+
+## 🎨 Component API
+
+### Props
+
+```typescript
+type FeatureFlagCardProps = {
+  name: string; // Display name of the feature flag
+  description?: string; // Detailed description
+  active: boolean; // Current enabled state
+  createdAt?: string | Date; // Creation timestamp
+  updatedAt?: string | Date; // Last update timestamp
+  onToggle?: (newState: boolean) => void; // Toggle callback
+  className?: string; // Additional CSS classes
+};
+```
+
+### Example Usage
 
 ```tsx
-import { FeatureFlagCard } from 'feature-flag-configuration-card';
+import { FeatureFlagCard } from '@/components/feature-flags/FeatureFlagCard';
 
-function App() {
-  const handleToggle = (id: string, newState: boolean) => {
-    console.log(
-      `Feature flag ${id} is now ${newState ? 'enabled' : 'disabled'}`
-    );
-  };
+function Dashboard() {
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <FeatureFlagCard
-      id="advanced-analytics"
-      name="Advanced Analytics"
-      description="Enable advanced analytics dashboard with real-time metrics and custom reports"
-      isEnabled={true}
-      requiresRestart={true}
-      impact="high"
-      onToggle={handleToggle}
+      name="User Onboarding Flow"
+      description="Controls rollout of the new onboarding process."
+      active={isActive}
+      createdAt="2025-10-01"
+      updatedAt="2025-10-11"
+      onToggle={(newState) => setIsActive(newState)}
     />
   );
 }
@@ -62,219 +99,229 @@ function App() {
 
 ## 📚 Documentation
 
-### Props
+### Specification Files
 
-| Prop              | Type                                      | Required | Default | Description                                    |
-| ----------------- | ----------------------------------------- | -------- | ------- | ---------------------------------------------- |
-| `id`              | `string`                                  | ✅       | -       | Unique identifier for the feature flag         |
-| `name`            | `string`                                  | ✅       | -       | Display name of the feature flag               |
-| `description`     | `string`                                  | ✅       | -       | Detailed description of what the flag controls |
-| `isEnabled`       | `boolean`                                 | ✅       | -       | Current enabled state of the flag              |
-| `requiresRestart` | `boolean`                                 | ✅       | -       | Whether a restart is required after toggling   |
-| `impact`          | `'low' \| 'medium' \| 'high'`             | ✅       | -       | Impact level of the feature flag               |
-| `onToggle`        | `(id: string, newState: boolean) => void` | ✅       | -       | Callback function when toggle state changes    |
-| `className`       | `string`                                  | ❌       | `''`    | Optional additional CSS classes                |
+This project includes comprehensive specification documents:
 
-### Examples
+- **[SPECIFICATION.short.md](./SPECIFICATION.short.md)** - Interview walkthrough document with visual design, states, and usage examples
+- **[SPECIFICATION.extended.md](./SPECIFICATION.extended.md)** - Detailed design-to-code mapping with Tailwind class references
+- **[SPECIFICATION.md](./SPECIFICATION.md)** - Complete technical specification with accessibility, testing, and deployment details
 
-#### Disabled Flag with Low Impact
+### Design System
 
-```tsx
-<FeatureFlagCard
-  id="dark-mode"
-  name="Dark Mode"
-  description="Enable dark mode theme across the application"
-  isEnabled={false}
-  requiresRestart={false}
-  impact="low"
-  onToggle={handleToggle}
-/>
-```
+The component follows a strict design system:
 
-#### Enabled Flag with Restart Warning
-
-```tsx
-<FeatureFlagCard
-  id="api-v2"
-  name="API v2 Migration"
-  description="Switch to the new API v2 endpoints for improved performance"
-  isEnabled={true}
-  requiresRestart={true}
-  impact="high"
-  onToggle={handleToggle}
-/>
-```
-
-## 🎨 Design System
-
-### Visual Specifications
-
-The component follows a strict design system with careful attention to:
-
-- **Spacing**: 8px grid system with consistent padding (24px)
-- **Colors**: Semantic color palette with WCAG AA contrast ratios
-- **Typography**: Clear hierarchy with bold headings and readable body text
-- **Shadows**: Elevated card design with `shadow-xl`
-- **Borders**: 4px left accent border for state indication
+- **Container**: White background with `shadow-xl` and `rounded-xl` borders
+- **State Borders**: 4px left border (Indigo-500 for active, Gray-200 for inactive)
+- **Typography**: Semibold titles, muted metadata text
+- **Spacing**: Consistent padding using 8px grid system (`p-4 md:p-6`)
+- **Animations**: Smooth 150ms transitions for state changes
 
 ### Responsive Behavior
 
-#### Mobile (< 768px)
+- **Mobile (< 768px)**: Vertical stack layout with full-width toggle
+- **Desktop (≥ 768px)**: Grid layout with toggle aligned right
+- **Text Handling**: Automatic truncation for long names
 
-- Vertical stack layout
-- Full-width toggle switch
-- Stacked footer elements
+### Accessibility Features
 
-#### Desktop (≥ 768px)
-
-- 3-column grid layout
-- Name/description spans 2 columns
-- Toggle switch aligned right
-- Horizontal footer with space-between alignment
-
-## ♿ Accessibility
-
-This component is built with accessibility as a first-class concern:
-
-### Keyboard Navigation
-
-- **Tab**: Move focus to the toggle switch
-- **Space/Enter**: Toggle the switch on/off
-- **Shift + Tab**: Move focus backward
-
-### Screen Reader Support
-
-- Semantic HTML with proper heading hierarchy (`<h2>` for flag name)
-- ARIA attributes (`role="switch"`, `aria-checked`)
-- Screen reader announcements for state changes
-- Hidden labels with `.sr-only` class
-
-### WCAG 2.1 Compliance
-
-- ✅ Level A: Keyboard accessible, semantic structure
-- ✅ Level AA: 4.5:1 text contrast, 3:1 UI component contrast
-- ✅ Focus indicators: Visible focus rings on all interactive elements
+- ✅ Semantic HTML (`<article>`, `<h3>`, `<button>`, `<time>`)
+- ✅ ARIA attributes (`role="switch"`, `aria-checked`, `aria-label`)
+- ✅ Full keyboard navigation (Tab, Space, Enter)
+- ✅ Visible focus indicators
+- ✅ WCAG 2.1 AA color contrast ratios
+- ✅ Respects `prefers-reduced-motion`
 
 ## 🧪 Testing
 
-```bash
-# Run unit tests
-npm test
+The component includes comprehensive tests covering:
 
-# Run tests with coverage
-npm test -- --coverage
-
-# Run accessibility tests
-npm run test:a11y
-```
-
-## 🛠️ Development
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-- React 18+
-- Tailwind CSS 3.4+
-
-### Setup
+- Rendering with various prop combinations
+- Toggle functionality (mouse and keyboard)
+- ARIA attributes and accessibility
+- Keyboard navigation (Space, Enter keys)
+- Visual states (active/inactive borders)
+- Semantic HTML structure
 
 ```bash
-# Clone the repository
-git clone https://github.com/jamesfmcgrath/feature-flag-configuration-card.git
+# Run tests
+pnpm test
 
-# Install dependencies
-cd feature-flag-configuration-card
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
+# Run tests in CI mode
+pnpm test:ci
 ```
 
-### Project Structure
+## 🏗️ Project Structure
 
 ```
-feature-flag-configuration-card/
+.
 ├── src/
-│   ├── FeatureFlagCard.tsx       # Main component
-│   ├── FeatureFlagCard.test.tsx  # Unit tests
-│   ├── types.ts                  # TypeScript types
-│   └── index.ts                  # Entry point
-├── SPECIFICATION.md              # Technical specification
-├── README.md                     # This file
+│   ├── app/
+│   │   ├── globals.css           # Global styles with Tailwind
+│   │   ├── layout.tsx            # Root layout
+│   │   └── page.tsx              # Demo page with examples
+│   └── components/
+│       └── feature-flags/
+│           ├── FeatureFlagCard.tsx         # Main component
+│           ├── FeatureFlagCard.stories.tsx # Storybook stories
+│           └── FeatureFlagCard.test.tsx    # Jest tests
+├── .storybook/
+│   ├── main.ts                   # Storybook configuration
+│   └── preview.ts                # Global decorators
+├── SPECIFICATION.short.md        # Interview walkthrough
+├── SPECIFICATION.extended.md     # Detailed mapping
+├── SPECIFICATION.md              # Complete technical spec
 ├── package.json
 ├── tsconfig.json
-└── tailwind.config.js
+├── tailwind.config.ts
+├── jest.config.js
+└── README.md
 ```
 
-## 🎯 Use Cases
+## 🚢 Vercel Deployment
 
-This component is ideal for:
+This project is optimized for Vercel deployment.
 
-- **SaaS Dashboards**: Feature flag management interfaces
-- **Admin Panels**: Configuration screens for system administrators
-- **Developer Tools**: Internal tools for toggling feature rollouts
-- **A/B Testing Platforms**: Experiment configuration interfaces
+### Option 1: GitHub Integration (Recommended)
 
-## 📖 Technical Specification
+1. Push your code to GitHub
+2. Import project in [Vercel Dashboard](https://vercel.com/dashboard)
+3. Vercel will auto-detect Next.js and deploy
 
-For detailed technical specifications, including:
+### Option 2: Vercel CLI
 
-- Complete visual specifications
-- Layout and responsiveness details
-- Interactive element requirements
-- Code quality standards
-- Performance benchmarks
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-Please refer to [SPECIFICATION.md](./SPECIFICATION.md)
+# Deploy
+vercel
+
+# Deploy to production
+vercel --prod
+```
+
+### Environment Setup
+
+No environment variables required for the demo. The component works out of the box.
+
+### Build Configuration
+
+The project uses Next.js 14 with App Router. Vercel automatically:
+
+- Detects Next.js framework
+- Installs dependencies with pnpm
+- Builds with `pnpm build`
+- Deploys optimized static and server assets
+
+## 🎯 Design Decisions
+
+### Why These Technologies?
+
+- **Next.js 14**: Modern React framework with App Router for optimal performance
+- **TypeScript**: Type safety and better developer experience
+- **Tailwind CSS**: Utility-first CSS for rapid development and consistent design
+- **Storybook 8**: Component documentation and visual testing
+- **Jest + RTL**: Industry-standard testing tools for React
+
+### Component Architecture
+
+The `FeatureFlagCard` is designed as a **controlled component**:
+
+- Parent manages state via `active` prop
+- Component notifies parent via `onToggle` callback
+- No internal state for the active/inactive status
+- Follows React best practices for reusability
+
+### Accessibility First
+
+Every interactive element is keyboard accessible:
+
+- Toggle button uses `role="switch"` with `aria-checked`
+- Visible focus rings for keyboard navigation
+- Semantic HTML for screen readers
+- Proper ARIA labels for context
+
+## 🔧 Development Tips
+
+### Adding New States
+
+To add new states (e.g., "warning" or "error"):
+
+1. Update the props type in `FeatureFlagCard.tsx`
+2. Add border color mapping in the component
+3. Create new Storybook stories
+4. Add tests for the new state
+
+### Customizing Styles
+
+The component uses Tailwind classes throughout. To customize:
+
+1. Edit `tailwind.config.ts` for theme changes
+2. Use the `className` prop for one-off customizations
+3. Extend with CSS modules if needed
+
+### Testing Changes
+
+```bash
+# Run tests in watch mode while developing
+pnpm test
+
+# Check accessibility
+# Tests include ARIA attribute validation
+```
+
+## 📦 Dependencies
+
+### Core
+
+- `next` - React framework
+- `react` - UI library
+- `react-dom` - React DOM renderer
+- `clsx` - Conditional className utility
+
+### Development
+
+- `@storybook/nextjs` - Storybook integration
+- `@testing-library/react` - React testing utilities
+- `@testing-library/user-event` - User interaction simulation
+- `jest` - Testing framework
+- `typescript` - Type checking
+- `tailwindcss` - Utility CSS framework
+- `eslint` - Code linting
+- `prettier` - Code formatting
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
+This is a demonstration project, but contributions are welcome!
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Code Standards
-
-- Follow the existing code style
-- Write comprehensive tests for new features
-- Ensure accessibility standards are met
-- Update documentation as needed
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Ensure all tests pass
+6. Submit a pull request
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - feel free to use this component in your projects.
 
 ## 🙏 Acknowledgments
 
 - Design system inspired by modern SaaS applications
 - Accessibility patterns from [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
-- Built with [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com/)
+- Built with best practices from the React and Next.js communities
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/jamesfmcgrath/feature-flag-configuration-card/issues)
-- **Documentation**: [Full Specification](./SPECIFICATION.md)
-- **Email**: james@example.com
+For questions or issues:
 
-## 🗺️ Roadmap
-
-- [ ] Add animation variants for toggle transitions
-- [ ] Support for custom color themes
-- [ ] Dark mode support
-- [ ] Multi-language support (i18n)
-- [ ] Storybook documentation
-- [ ] Export as Web Component
+- Review the [specification documents](./SPECIFICATION.md)
+- Check [Storybook documentation](http://localhost:6006) (when running)
+- Open an issue on GitHub
 
 ---
 
-**Made with ❤️ by James McGrath**
+**Built with ❤️ by James F. McGrath**
 
-⭐ If you find this project useful, please consider giving it a star on GitHub!
+_Demonstrating production-ready React component development_
