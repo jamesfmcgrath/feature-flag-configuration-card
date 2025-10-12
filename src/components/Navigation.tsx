@@ -7,9 +7,9 @@ export function Navigation() {
   const pathname = usePathname();
 
   const links = [
-    { href: '/', label: 'Demo' },
-    { href: '/spec', label: 'Specification' },
-    { href: '/storybook', label: 'Storybook' },
+    { href: '/', label: 'Demo', external: false },
+    { href: '/spec', label: 'Specification', external: false },
+    { href: '/storybook', label: 'Storybook', external: true },
   ];
 
   return (
@@ -26,16 +26,28 @@ export function Navigation() {
             <div className="hidden md:flex space-x-1">
               {links.map((link) => {
                 const isActive = pathname === link.href;
+                const className = `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  isActive
+                    ? 'bg-indigo-50 text-indigo-700'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`;
+
+                if (link.external) {
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={className}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                }
+
                 return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'bg-indigo-50 text-indigo-700'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                    }`}
-                  >
+                  <Link key={link.href} href={link.href} className={className}>
                     {link.label}
                   </Link>
                 );

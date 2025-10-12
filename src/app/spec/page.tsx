@@ -33,7 +33,7 @@ export default function SpecificationPage() {
             {/* Quick Overview */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                📋 Quick Overview
+                Quick Overview
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 This document demonstrates{' '}
@@ -56,6 +56,8 @@ export default function SpecificationPage() {
                 </a>
                 <a
                   href="/storybook"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors"
                 >
                   View Storybook
@@ -66,7 +68,7 @@ export default function SpecificationPage() {
             {/* Design-to-Code Mapping */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                🎨 Design-to-Code Mapping
+                Design-to-Code Mapping
               </h2>
               <p className="text-gray-700 leading-relaxed mb-6">
                 This table shows the exact translation from design specification
@@ -262,7 +264,7 @@ export default function SpecificationPage() {
             {/* Responsive Design */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                📱 Responsive Design Strategy
+                Responsive Design Strategy
               </h2>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
                 Mobile-First Approach
@@ -349,7 +351,7 @@ export default function SpecificationPage() {
             {/* Accessibility */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                ♿ Accessibility Implementation
+                Accessibility Implementation
               </h2>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
                 WCAG 2.1 AA Compliance
@@ -479,7 +481,7 @@ export default function SpecificationPage() {
             {/* Component API */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                🧩 Component API
+                Component API
               </h2>
               <h3 className="text-lg font-semibold text-gray-900 mb-3">
                 TypeScript Interface
@@ -531,7 +533,7 @@ export default function SpecificationPage() {
             {/* Project Stats */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                📊 Project Stats
+                Project Stats
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4">
@@ -578,7 +580,7 @@ export default function SpecificationPage() {
             {/* Technical Stack */}
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                🔧 Technical Stack
+                Technical Stack
               </h2>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">
