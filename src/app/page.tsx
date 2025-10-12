@@ -7,7 +7,7 @@ export default function Home() {
   const [flags, setFlags] = useState({
     onboarding: true,
     analytics: false,
-    darkMode: true,
+    darkMode: false,
     apiV2: false,
     longName: true,
     minimal: false,
@@ -19,19 +19,37 @@ export default function Home() {
   };
 
   return (
-    <main id="main-content" className="min-h-screen bg-gray-50 py-12 px-4">
+    <main
+      id="main-content"
+      className={`min-h-screen py-12 px-4 transition-colors duration-300 ${
+        flags.darkMode ? 'bg-gray-900' : 'bg-gray-50'
+      }`}
+    >
       <div className="max-w-4xl mx-auto space-y-8">
         <header className="text-center space-y-3">
-          <h1 className="text-4xl font-bold text-gray-900 leading-tight">
+          <h1
+            className={`text-4xl font-bold leading-tight transition-colors duration-300 ${
+              flags.darkMode ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             Feature Flag Configuration Card
           </h1>
-          <p className="text-lg text-gray-800 leading-relaxed">
-            Production-ready component demonstration
+          <p
+            className={`text-lg leading-relaxed transition-colors duration-300 ${
+              flags.darkMode ? 'text-gray-300' : 'text-gray-800'
+            }`}
+          >
+            Component demonstration with interactive toggles and responsive
+            layout.
           </p>
         </header>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-900 leading-tight">
+          <h2
+            className={`text-2xl font-semibold leading-tight transition-colors duration-300 ${
+              flags.darkMode ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             Active Flags
           </h2>
 
@@ -55,7 +73,11 @@ export default function Home() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-900 leading-tight">
+          <h2
+            className={`text-2xl font-semibold leading-tight transition-colors duration-300 ${
+              flags.darkMode ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             Inactive Flags
           </h2>
 
@@ -76,7 +98,11 @@ export default function Home() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-900 leading-tight">
+          <h2
+            className={`text-2xl font-semibold leading-tight transition-colors duration-300 ${
+              flags.darkMode ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             Edge Cases
           </h2>
 
