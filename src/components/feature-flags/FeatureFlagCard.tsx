@@ -171,7 +171,7 @@ export function FeatureFlagCard({
         <span
           className={clsx(
             'inline-flex items-center px-3 py-1 rounded text-sm font-bold leading-relaxed',
-            active ? 'bg-green-700 text-white' : 'bg-gray-700 text-white'
+            active ? 'bg-green-800 text-white' : 'bg-gray-800 text-white'
           )}
         >
           {active ? 'Active' : 'Inactive'}
