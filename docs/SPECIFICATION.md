@@ -1,654 +1,417 @@
-# Feature Flag Configuration Card — Specification
+# Feature Flag Configuration Card — Interview Specification
 
-## Document Information
-
-- **Version**: 1.0.0
-- **Last Updated**: October 11, 2025
-- **Author**: James F. McGrath
-- **Purpose**: Demonstration of design-to-code fidelity for technical interview
-- **Status**: Production Ready
+**Version**: 1.0.0
+**Date**: October 12, 2025
+**Status**: Production Ready
 
 ---
 
-## 1. Overview
+## 📋 Quick Overview
 
-The **Feature Flag Configuration Card** manages the display and state of a single feature flag within a dashboard.
-It demonstrates the translation of a Figma-style design specification into clean, maintainable, and accessible React code using Tailwind CSS.
-The component reflects a **production-ready SaaS design system**: responsive, semantically structured, and easy to extend or document in Storybook.
+This document demonstrates **design-to-code translation** for a production-ready Feature Flag Card component. It showcases:
 
-### 1.1 Goals
+- High-fidelity Figma-to-code implementation
+- WCAG 2.1 AA accessibility compliance
+- Mobile-first responsive design
+- TypeScript type safety
+- Component-driven architecture
 
-- Translate visual design tokens directly into Tailwind classes
-- Ensure responsive and accessible layout that fits within a SaaS dashboard
-- Maintain clarity, readability, and flexibility for reuse
-- Reflect design philosophy: simplicity, precision, and developer clarity
-- Demonstrate high-fidelity translation of design constraints into clean, maintainable code
-
----
-
-## 2. Visual Specifications (Fidelity Check)
-
-| Element              | Visual Specification                                  | Tailwind Mapping                                               | Rationale                                     |
-| -------------------- | ----------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------- |
-| **Container**        | White background, large shadow, large rounded corners | `bg-white shadow-xl rounded-xl`                                | Elevates the card visually within a dashboard |
-| **Active Border**    | 4px left border, Indigo-500                           | `border-l-4 border-indigo-500`                                 | Communicates enabled/active flag              |
-| **Inactive Border**  | 4px left border, Gray-200                             | `border-l-4 border-gray-200`                                   | Indicates disabled/inactive flag              |
-| **Title**            | Semibold, 16–18px (base to xl)                        | `text-base font-semibold text-gray-900` or `text-xl font-bold` | Clear hierarchy and readability               |
-| **Description**      | Default size, gray-600 color                          | `text-gray-600`                                                | Standard readability                          |
-| **Metadata Text**    | Small, muted                                          | `text-sm text-gray-500`                                        | De-emphasized contextual info                 |
-| **Badges**           | Extra small, semibold/medium weights                  | `text-xs font-semibold` or `font-medium`                       | Visual categorization                         |
-| **Toggle Control**   | Compact switch with focus state                       | `focus:ring-2 focus:ring-indigo-300`                           | Keyboard accessible, visible focus state      |
-| **Spacing**          | Padding around card content                           | `p-6 space-y-3` or responsive `p-4 md:p-6`                     | Consistent rhythm and white space             |
-| **Animation**        | Smooth border and background transitions              | `transition-colors duration-150 ease-in-out`                   | Visual polish without distraction             |
-| **Internal Divider** | Light gray line separating sections                   | `pt-4 border-t border-gray-100`                                | Visual break for metadata section             |
-
-### 2.1 Color Palette
-
-#### State Colors
-
-- **Active**: Indigo-500 (`#6366f1`)
-- **Inactive**: Gray-200 (`#e5e7eb`)
-- **Text Primary**: Gray-900 (`#111827`)
-- **Text Secondary**: Gray-600 (`#4b5563`)
-- **Metadata Text**: Gray-500 (`#6b7280`)
-- **Divider**: Gray-100 (`#f3f4f6`)
-
-#### Badge Colors
-
-| Badge Type    | Background | Text       | Tailwind Classes                |
-| ------------- | ---------- | ---------- | ------------------------------- |
-| Active        | Green-100  | Green-800  | `bg-green-100 text-green-800`   |
-| Inactive      | Red-100    | Red-800    | `bg-red-100 text-red-800`       |
-| High Impact   | Yellow-100 | Yellow-800 | `bg-yellow-100 text-yellow-800` |
-| Medium Impact | Blue-100   | Blue-800   | `bg-blue-100 text-blue-800`     |
-| Low Impact    | Gray-100   | Gray-800   | `bg-gray-100 text-gray-800`     |
+**Live Demo**: [feature-flag-configuration-card.vercel.app](https://feature-flag-configuration-card.vercel.app/)
+**Storybook**: [/storybook](https://feature-flag-configuration-card.vercel.app/storybook)
 
 ---
 
-## 3. Component States
+## 🎨 Design-to-Code Mapping
 
-### 3.1 Active State
+This table shows the exact translation from design specification to Tailwind CSS implementation:
 
-- Left border: `border-l-4 border-indigo-500`
-- Toggle: ON
-- Background: `bg-white`
-- Text: Full contrast (`text-gray-900`)
+| Design Element      | Visual Specification                   | Tailwind Implementation                  | Rationale                                   |
+| ------------------- | -------------------------------------- | ---------------------------------------- | ------------------------------------------- |
+| **Container**       | White background, elevated shadow      | `bg-white shadow-xl rounded-xl`          | Creates card elevation in dashboard context |
+| **Active Border**   | 4px left border, Indigo-500            | `border-l-4 border-indigo-500`           | Clear visual indicator of enabled state     |
+| **Inactive Border** | 4px left border, Gray-200              | `border-l-4 border-gray-200`             | Muted appearance for disabled state         |
+| **Title**           | Semibold, 16–18px, high contrast       | `text-base font-semibold text-gray-900`  | Establishes clear hierarchy                 |
+| **Description**     | Regular weight, medium gray            | `text-gray-600 leading-relaxed`          | Supporting information, readable contrast   |
+| **Metadata**        | Small size, muted gray                 | `text-sm text-gray-500`                  | De-emphasized contextual info               |
+| **Toggle Switch**   | iOS-style, green active, gray inactive | Custom with `bg-green-500`/`bg-gray-300` | Modern, familiar interaction pattern        |
+| **Status Badge**    | Pill shape, colored background         | `bg-green-800 text-white` (7.67:1)       | AAA contrast for accessibility              |
+| **Spacing**         | Balanced padding, vertical rhythm      | `p-6 space-y-3`                          | Comfortable breathing room                  |
+| **Animation**       | Smooth state transitions               | `transition-colors duration-150`         | Polish without distraction                  |
 
-### 3.2 Inactive State
+### Color Contrast Ratios (WCAG 2.1)
 
-- Left border: `border-l-4 border-gray-200`
-- Toggle: OFF
-- Text: Muted or gray (`text-gray-500`)
-- Hover/focus styles lighten border color slightly for clarity
-
-### 3.3 Hover & Focus States
-
-- Border color lightens (`border-indigo-400`)
-- Focus ring visible (`ring-2 ring-indigo-300 ring-offset-2`)
-- Transition applied via `duration-150 ease-in-out`
+| Element             | Colors             | Ratio   | Standard |
+| ------------------- | ------------------ | ------- | -------- |
+| Active Status Badge | White on Green-800 | 7.67:1  | AAA ✓    |
+| Inactive Badge      | White on Gray-800  | 12.63:1 | AAA ✓    |
+| Primary Text        | Gray-900 on White  | 16.08:1 | AAA ✓    |
+| Description Text    | Gray-600 on White  | 7.23:1  | AAA ✓    |
+| Metadata Text       | Gray-500 on White  | 4.61:1  | AA ✓     |
 
 ---
 
-## 4. Layout & Responsiveness
+## 📱 Responsive Design Strategy
 
-The component uses Tailwind's default breakpoint system with a mobile-first approach:
+### Mobile-First Approach
 
-- **Mobile**: `< 768px` (default)
-- **Tablet/Desktop**: `≥ 768px` (`md:` prefix)
-- **Footer Transition**: `≥ 640px` (`sm:` prefix)
+**Breakpoints**:
 
-### 4.1 Mobile Layout (< 768px)
+- Mobile: `< 768px` (default, no prefix)
+- Desktop: `≥ 768px` (`md:` prefix)
+- Footer: `≥ 640px` (`sm:` prefix)
 
-The card uses a **vertical stack** for the main content block.
+### Layout Transitions
+
+#### Mobile (< 768px)
 
 ```
-┌─────────────────────────────────┐
-│  [Flag Name]                    │
-│  [Description]                  │
-│  [Toggle Switch - Full Width]   │
-│  ─────────────────────────────  │
-│  [Status Badge]                 │
-│  [Warning Indicator]            │
-└─────────────────────────────────┘
+┌─────────────────────────┐
+│ [Name]                  │
+│ [Description]           │
+│ [Toggle - Full Width]   │
+│ ───────────────────────│
+│ [Status Badge]          │
+│ [Created Date]          │
+└─────────────────────────┘
 ```
 
-**Implementation**:
+**Implementation**: Vertical stack with `flex flex-col gap-4`
 
-- Vertical stack using default flexbox direction for main content
-- Collapses to single-column stack: `grid-cols-1 gap-4`
-- Name/Description stacked vertically
-- Toggle switch full-width, left-aligned
-- Footer stacks vertically (`flex-col`)
-- Text truncates with `truncate` to prevent overflow
-- Padding scales: `p-4 md:p-6`
-
-### 4.2 Desktop Layout (≥ 768px)
-
-The content block transitions to a **flexible grid** or **3-column grid**.
+#### Desktop (≥ 768px)
 
 ```
-┌─────────────────────────────────────────────────┐
-│  [Flag Name]                    [Toggle Switch] │
-│  [Description]                                  │
-│  ─────────────────────────────────────────────  │
-│  [Status Badge]           [Warning Indicator]   │
-└─────────────────────────────────────────────────┘
+┌───────────────────────────────────────┐
+│ [Name]                   [Toggle]     │
+│ [Description]                         │
+│ ─────────────────────────────────────│
+│ [Status]           [Created Date]    │
+└───────────────────────────────────────┘
 ```
 
-**Implementation Options**:
+**Implementation**: Flexible grid with `grid grid-cols-[auto,1fr,auto]`
 
-**Option A - Flexible Grid**:
+### Key Responsive Classes
 
-- Uses: `grid grid-cols-[auto,1fr,auto] gap-4 items-center`
-- Automatically sizes columns based on content
-
-**Option B - 3-Column Grid**:
-
-- Uses: `md:grid md:grid-cols-3`
-- Name/Description: Spans 2 columns (`md:col-span-2`)
-- Toggle Switch: Aligned right, spans 1 column (`md:col-span-1`)
-
-### 4.3 Footer Section
-
-The footer contains **status badges and warning indicators**.
-
-**Implementation**:
-
-- Mobile: Vertical stack (`flex-col`)
-- Desktop: Horizontal layout (`sm:flex-row`)
-
-### 4.4 Responsive Class Mapping
-
-| Section          | Mobile Classes        | Desktop Classes                                         |
-| ---------------- | --------------------- | ------------------------------------------------------- |
-| Main Content     | `flex flex-col`       | `md:grid md:grid-cols-3` or `grid-cols-[auto,1fr,auto]` |
-| Text Block       | `flex-1`              | `md:col-span-2`                                         |
-| Toggle Container | `w-full`              | `md:col-span-1 md:flex md:justify-end`                  |
-| Footer           | `flex flex-col gap-2` | `sm:flex-row sm:justify-between sm:items-center`        |
-
-This ensures consistent rendering across viewport widths while maintaining clarity and balance.
+| Element | Mobile                | Desktop                                |
+| ------- | --------------------- | -------------------------------------- |
+| Padding | `p-4`                 | `md:p-6`                               |
+| Layout  | `flex flex-col gap-4` | `md:grid md:grid-cols-[auto,1fr,auto]` |
+| Footer  | `flex-col gap-2`      | `sm:flex-row sm:justify-between`       |
+| Text    | Default               | Responsive with `truncate`             |
 
 ---
 
-## 5. Accessibility
+## ♿ Accessibility Implementation
 
-All interactive elements (toggles, buttons) are keyboard accessible:
+### WCAG 2.1 AA Compliance
 
-- Uses semantic HTML (`<article>`, `<h2>` or `<h3>`, `<button>`, `<time>`)
-- Clear visible focus states and sufficient color contrast (WCAG 2.1 AA)
-- ARIA attributes for the toggle to indicate active/inactive state
-- States and transitions are non-motion-dependent for reduced motion settings
+| Criterion                    | Implementation                                   |
+| ---------------------------- | ------------------------------------------------ |
+| **1.4.3 Contrast (Minimum)** | All text meets 4.5:1 minimum (badges exceed 7:1) |
+| **1.4.11 Non-text Contrast** | UI components meet 3:1 minimum                   |
+| **1.4.12 Text Spacing**      | Line height 1.6, adequate spacing                |
+| **2.1.1 Keyboard**           | Full keyboard navigation with Tab/Space/Enter    |
+| **2.4.7 Focus Visible**      | Custom focus rings on all interactive elements   |
+| **2.5.5 Target Size**        | 44×44px tap targets (transparent wrapper)        |
+| **4.1.2 Name, Role, Value**  | ARIA `role="switch"`, `aria-checked`             |
 
-### 5.1 WCAG 2.1 Compliance
+### Toggle Switch Accessibility
 
-| Criterion                    | Level | Implementation                   |
-| ---------------------------- | ----- | -------------------------------- |
-| 1.3.1 Info and Relationships | A     | Semantic HTML (h2, button, etc.) |
-| 1.4.3 Contrast (Minimum)     | AA    | 4.5:1 text, 3:1 UI components    |
-| 2.1.1 Keyboard               | A     | Full keyboard navigation         |
-| 2.1.2 No Keyboard Trap       | A     | Focus management                 |
-| 2.4.7 Focus Visible          | AA    | Custom focus rings               |
-| 4.1.2 Name, Role, Value      | A     | ARIA attributes                  |
-
-### 5.2 Keyboard Navigation
-
-| Key           | Action                      |
-| ------------- | --------------------------- |
-| `Tab`         | Move focus to toggle switch |
-| `Space`       | Toggle switch on/off        |
-| `Enter`       | Toggle switch on/off        |
-| `Shift + Tab` | Move focus backward         |
-
-### 5.3 Screen Reader Support
-
-**Announcements**:
-
-- Component load: "Feature Flag Configuration Card"
-- Toggle state change: "Feature flag enabled" / "Feature flag disabled"
-- Warning: "Warning: Restart required to apply changes"
-
----
-
-## 6. Interactive Specifications
-
-### 6.1 Toggle Switch Component
-
-#### Requirements
-
-1. **Interaction**: Must be interactive on click/tap
-2. **Keyboard Navigation**: Full keyboard support (Space/Enter to toggle)
-3. **Screen Readers**: Announce current state and role
-4. **Visual Feedback**: Clear on/off states with smooth transitions
-
-#### Implementation
-
-**HTML Structure**:
-
-Implemented as a native HTML `<button>` with `role="switch"` and `aria-checked` attributes to meet WAI-ARIA standards, ensuring robust accessibility.
-
-```html
+```tsx
 <button
   role="switch"
-  aria-checked="{isEnabled}"
-  aria-label="Toggle feature flag"
-  onClick="{handleToggle}"
-  className="relative inline-flex items-center..."
+  aria-checked={active}
+  aria-label={`Toggle ${name} feature flag`}
+  className="min-w-[44px] min-h-[44px] bg-transparent"
+  onClick={handleToggle}
 >
-  <span className="sr-only">Enable feature flag</span>
-  <span className="toggle-track...">
-    <span className="toggle-thumb..." />
+  {/* 44×44px invisible tap target wrapper */}
+  <span className="h-8 w-14 bg-green-500 rounded-full">
+    <span className="h-6 w-6 bg-white shadow-md ring-1 ring-gray-200" />
   </span>
 </button>
 ```
 
-**WAI-ARIA Attributes**:
+**Key Features**:
 
-- `role="switch"`: Identifies the button as a toggle switch
-- `aria-checked`: Reflects current state (true/false)
-- `aria-label`: Provides accessible name for screen readers
+- ✓ Native `<button>` element (semantic HTML)
+- ✓ `role="switch"` + `aria-checked` (WAI-ARIA)
+- ✓ Descriptive `aria-label` (screen readers)
+- ✓ 44×44px minimum tap target (mobile accessibility)
+- ✓ Keyboard support: Space/Enter to toggle
+- ✓ Visible focus ring: `focus:ring-2 focus:ring-indigo-300`
 
-**Visual States**:
-| State | Track Color | Thumb Position | Tailwind Classes |
-|-------|-------------|----------------|------------------|
-| Enabled | Indigo-600 | Right (translate-x-5) | `bg-indigo-600` |
-| Disabled | Gray-200 | Left (translate-x-0) | `bg-gray-200` |
+### Keyboard Navigation
 
-### 6.2 Warning Indicator
+| Key           | Action                 |
+| ------------- | ---------------------- |
+| `Tab`         | Focus toggle switch    |
+| `Space/Enter` | Toggle on/off          |
+| `Shift+Tab`   | Focus previous element |
 
-#### Visibility Logic
+---
 
-```javascript
-{
-  requiresRestart && isEnabled && (
-    <div className="warning-indicator">
-      ⚠️ Restart required to apply changes
-    </div>
-  );
-}
+## 🧩 Component API
+
+### TypeScript Interface
+
+```typescript
+export type FeatureFlagCardProps = {
+  /** Display name of the feature flag */
+  name: string;
+
+  /** Detailed description of what the flag controls */
+  description?: string;
+
+  /** Current enabled state of the flag */
+  active: boolean;
+
+  /** When the flag was created */
+  createdAt?: string | Date;
+
+  /** When the flag was last updated */
+  updatedAt?: string | Date;
+
+  /** Callback function when toggle state changes */
+  onToggle?: (newState: boolean) => void;
+
+  /** Optional additional CSS classes */
+  className?: string;
+};
 ```
 
-**Conditions**:
-
-- `isEnabled === true` AND
-- `requiresRestart === true`
-
-**Visual Treatment**:
-
-- Icon: Warning emoji or SVG icon
-- Text: Small, yellow-800 color
-- Background: Yellow-50
-- Classes: `bg-yellow-50 text-yellow-800 text-xs rounded px-2 py-1`
-
-### 6.3 Interaction Logic
-
-- Accepts `active` (boolean) and `onToggle` (function) as props
-- Card re-renders only when state changes
-- Optional metadata: `name`, `description`, `createdAt`, `updatedAt`, etc.
-
-**Example**:
+### Example Usage
 
 ```tsx
 <FeatureFlagCard
-  name="User Onboarding Flow"
+  name="Advanced Analytics Dashboard"
+  description="Enable real-time analytics with custom metrics"
   active={true}
-  description="Controls rollout of the new onboarding process."
   createdAt="2025-10-01"
-  onToggle={() => console.log('toggled')}
+  updatedAt="2025-10-12"
+  onToggle={(newState) => console.log('Toggled to:', newState)}
 />
 ```
 
 ---
 
-## 7. Component Props API
+## 🎯 Interview Discussion Guide
 
-### 7.1 TypeScript Interface
+### 1. Design-to-Code Translation (5 min)
 
-```typescript
-interface FeatureFlagCardProps {
-  /** Unique identifier for the feature flag */
-  id: string;
+**Opening**: "Let me walk you through how I translated the design spec into production code..."
 
-  /** Display name of the feature flag */
-  name: string;
+**Show**:
 
-  /** Detailed description of what the flag controls */
-  description: string;
+1. Open this specification (Design-to-Code Mapping table)
+2. Open `FeatureFlagCard.tsx` in VS Code
+3. Point out specific Tailwind classes matching the spec
 
-  /** Current enabled state of the flag */
-  isEnabled: boolean;
+**Example**:
 
-  /** Whether a restart is required after toggling */
-  requiresRestart: boolean;
+> "For the container, the spec called for 'elevated shadow with rounded corners', which I implemented with `shadow-xl rounded-xl`. The active state border is a 4px left border in Indigo-500, implemented as `border-l-4 border-indigo-500`."
 
-  /** Impact level of the feature flag */
-  impact: 'low' | 'medium' | 'high';
+### 2. Accessibility Deep Dive (5 min)
 
-  /** Callback function when toggle state changes */
-  onToggle: (id: string, newState: boolean) => void;
+**Opening**: "Accessibility was a top priority. Let me show you the approach..."
 
-  /** Optional additional CSS classes */
-  className?: string;
-}
+**Demo**:
+
+1. Show live site with keyboard-only navigation
+2. Tab to toggle switch, press Space to toggle
+3. Open DevTools to show ARIA attributes
+4. Show color contrast table in this spec
+
+**Key Points**:
+
+- 44×44px tap target (transparent wrapper technique)
+- 7.67:1 contrast on status badges (exceeds AAA)
+- Full keyboard navigation with visible focus rings
+- WAI-ARIA switch pattern implementation
+
+### 3. Responsive Design (3 min)
+
+**Opening**: "The component uses a mobile-first responsive strategy..."
+
+**Demo**:
+
+1. Open DevTools device toolbar
+2. Resize from mobile (375px) to desktop (1440px)
+3. Point out layout transition at 768px breakpoint
+
+**Technical Details**:
+
+> "I used CSS Grid with `grid-cols-[auto,1fr,auto]` for the desktop layout. This auto-sizes the columns based on content, keeping the toggle right-aligned while the name/description flexes. On mobile, it collapses to a vertical stack."
+
+### 4. Component Architecture (2 min)
+
+**Opening**: "This is intentionally a single component..."
+
+**Points**:
+
+- ~200 lines total - cohesive and focused
+- Single responsibility: display and toggle feature flags
+- Easy to test, understand, and maintain
+- Avoided premature abstraction (YAGNI principle)
+
+**When to refactor**:
+
+> "I'd refactor into smaller components when I have 2-3 similar use cases and can identify clear abstraction boundaries. Right now, it's readable and maintainable as-is."
+
+### 5. Testing & Quality (2 min)
+
+**Show**:
+
+- 27 passing tests (Jest + React Testing Library)
+- 0 TypeScript errors
+- 0 ESLint warnings
+- Storybook with 8 interactive stories
+
+**Quality Indicators**:
+
+- Type-safe props with TypeScript
+- Comprehensive test coverage (render, interaction, accessibility)
+- Production deployed to Vercel
+- Full documentation
+
+---
+
+## 📊 Project Stats
+
+Quick reference numbers for discussion:
+
+- ✅ **27/27 tests passing** (100% success rate)
+- ✅ **WCAG 2.1 AA** (AAA in contrast areas)
+- ✅ **8 Storybook stories** (interactive documentation)
+- ✅ **~200 lines** (single cohesive component)
+- ✅ **0 errors, 0 warnings** (TypeScript + ESLint)
+- ✅ **Production deployed** (Vercel with custom build)
+- ✅ **31 → 0 violations** (Siteimprove accessibility audit)
+
+---
+
+## 🔧 Technical Stack
+
+| Category          | Technology   | Version | Purpose                         |
+| ----------------- | ------------ | ------- | ------------------------------- |
+| **Framework**     | Next.js      | 15.5.4  | React framework with App Router |
+| **Language**      | TypeScript   | 5.x     | Type safety and developer DX    |
+| **Styling**       | Tailwind CSS | 3.4.15  | Utility-first CSS framework     |
+| **Testing**       | Jest + RTL   | 29.7.0  | Unit and integration tests      |
+| **Documentation** | Storybook    | 8.4.7   | Component documentation         |
+| **Deployment**    | Vercel       | Latest  | CI/CD and hosting               |
+
+---
+
+## 🚀 Deployment Architecture
+
+### Build Pipeline
+
+```bash
+npm run build
+  ├─> npm run build-storybook     # Build Storybook to storybook-static/
+  ├─> npm run copy-storybook      # Copy to public/storybook/
+  └─> next build                   # Build Next.js app
 ```
 
-### 7.2 Prop Validation
+### Vercel Configuration
 
-| Prop              | Type     | Required | Default | Validation              |
-| ----------------- | -------- | -------- | ------- | ----------------------- |
-| `id`              | string   | Yes      | -       | Non-empty string        |
-| `name`            | string   | Yes      | -       | Non-empty string        |
-| `description`     | string   | Yes      | -       | Any string              |
-| `isEnabled`       | boolean  | Yes      | -       | true/false              |
-| `requiresRestart` | boolean  | Yes      | -       | true/false              |
-| `impact`          | enum     | Yes      | -       | 'low'\|'medium'\|'high' |
-| `onToggle`        | function | Yes      | -       | (id, state) => void     |
-| `className`       | string   | No       | ''      | Any string              |
+**Challenge**: Deploy both Next.js app AND Storybook from single deployment
 
----
-
-## 8. State Management
-
-### 8.1 Component State
-
-```typescript
-// Internal state (if needed)
-const [isToggling, setIsToggling] = useState(false);
-
-// Derived state
-const borderColor = isEnabled ? 'border-indigo-500' : 'border-gray-200';
-const statusBadge = isEnabled ? 'Active' : 'Inactive';
-const showWarning = isEnabled && requiresRestart;
-```
-
-### 8.2 Event Handlers
-
-```typescript
-const handleToggle = async () => {
-  setIsToggling(true);
-  try {
-    await onToggle(id, !isEnabled);
-  } catch (error) {
-    console.error('Failed to toggle flag:', error);
-  } finally {
-    setIsToggling(false);
-  }
-};
-```
-
----
-
-## 9. Testing Requirements
-
-### 9.1 Unit Tests
-
-- [ ] Component renders with all props
-- [ ] Toggle switch changes state correctly
-- [ ] Warning indicator shows only when conditions met
-- [ ] Correct border color for enabled/disabled states
-- [ ] All badges render with correct colors
-
-### 9.2 Accessibility Tests
-
-- [ ] Keyboard navigation works correctly
-- [ ] Screen reader announces state changes
-- [ ] Focus indicators are visible
-- [ ] Color contrast meets WCAG AA standards
-- [ ] ARIA attributes are correct
-
-### 9.3 Responsive Tests
-
-- [ ] Mobile layout displays correctly (< 768px)
-- [ ] Desktop layout displays correctly (≥ 768px)
-- [ ] Footer transitions at correct breakpoint (640px)
-- [ ] No horizontal scroll on mobile devices
-
-### 9.4 Integration Tests
-
-- [ ] onToggle callback fires with correct parameters
-- [ ] Loading states handle async operations
-- [ ] Error states display appropriately
-
----
-
-## 10. Browser Support
-
-| Browser       | Minimum Version | Notes           |
-| ------------- | --------------- | --------------- |
-| Chrome        | 90+             | Full support    |
-| Firefox       | 88+             | Full support    |
-| Safari        | 14+             | Full support    |
-| Edge          | 90+             | Full support    |
-| Mobile Safari | 14+             | Touch optimized |
-| Mobile Chrome | 90+             | Touch optimized |
-
----
-
-## 11. Performance Considerations
-
-### 11.1 Optimization Strategies
-
-1. **Memoization**: Use `React.memo()` to prevent unnecessary re-renders
-2. **Callback Stability**: Use `useCallback()` for event handlers
-3. **CSS-in-JS**: Use Tailwind for zero-runtime CSS
-4. **Bundle Size**: Component should be < 5KB gzipped
-
-### 11.2 Performance Metrics
-
-| Metric              | Target  | Measurement    |
-| ------------------- | ------- | -------------- |
-| First Paint         | < 100ms | Lighthouse     |
-| Time to Interactive | < 200ms | Lighthouse     |
-| Component Re-render | < 16ms  | React DevTools |
-
----
-
-## 12. Code Quality Standards
-
-### 12.1 Linting Rules
-
-- ESLint with `eslint-config-airbnb`
-- Prettier for code formatting
-- TypeScript strict mode enabled
-- No console.log in production builds
-
-### 12.2 Documentation Requirements
-
-- JSDoc comments for all exported functions
-- Inline comments for complex logic
-- Props table in component documentation
-- Usage examples in Storybook
-
----
-
-## 13. Deployment & Integration
-
-### 13.1 Package Structure
-
-```
-feature-flag-configuration-card/
-├── src/
-│   ├── FeatureFlagCard.tsx
-│   ├── FeatureFlagCard.test.tsx
-│   ├── types.ts
-│   └── index.ts
-├── package.json
-├── tsconfig.json
-├── tailwind.config.js
-└── README.md
-```
-
-### 13.2 Dependencies
+**Solution 1**: Override auto-detection with `vercel.json`
 
 ```json
 {
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
-  },
-  "dependencies": {
-    "tailwindcss": "^3.4.0"
-  }
+  "buildCommand": "npm run build",
+  "installCommand": "npm install"
 }
 ```
 
-### 13.3 Design & Build Notes
+**Solution 2**: Fix Storybook asset paths with `manager-head.html`
 
-- Built with **React 18+**, **TypeScript**, and **Tailwind CSS**
-- Designed for use in SaaS dashboards
-- Can be wrapped in higher-order layout components for list or detail views
-- Structure supports integration with headless CMS content (e.g., Sanity)
-
----
-
-## 14. Future Enhancements
-
-- Integrate Storybook stories for documentation and variant previews
-- Connect to a `useFeatureFlags()` hook for live data simulation
-- Add unit tests for rendering and accessibility
-- Introduce theme variables for light/dark mode consistency
-- Extend to handle grouped or environment-specific flags
-- Integration with design tokens via Tailwind config
-- State persistence (context or API simulation)
-- Snapshot tests for visual regression
-
----
-
-## 15. Change Log
-
-| Version | Date       | Changes               |
-| ------- | ---------- | --------------------- |
-| 1.0.0   | 2025-10-11 | Initial specification |
-
----
-
-## 16. References
-
-- [WAI-ARIA Authoring Practices - Switch Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/switch/)
-- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [React Accessibility Guide](https://react.dev/learn/accessibility)
-
----
-
-## 17. Interview Usage Guide
-
-### 17.1 Recommended Approach
-
-This specification document is designed to be used as a discussion tool during technical interviews or code reviews.
-
-#### Step 1: Start with the Design Spec
-
-**Opening Statement**:
-
-> "I built this Feature Flag Card to showcase my design-to-code process. Here is the design specification I worked from."
-
-**Action**: Share this markdown file or a screenshot of Section 2 (Visual Specifications).
-
-#### Step 2: Transition to Code
-
-**Transition Statement**:
-
-> "Now, let's look at how I translated these specific requirements into the live React component..."
-
-**Action**: Open the `FeatureFlagCard.tsx` file and reference specific implementations.
-
-#### Step 3: Drive the Discussion
-
-Use the specification sections as talking points, referencing the specific Tailwind classes in the `FeatureFlagCard.tsx` that implemented each rule.
-
-**Example Discussion Points**:
-
-1. **Visual Fidelity (Section 2)**:
-   - "For the container, I used `bg-white shadow-xl rounded-xl` to achieve high visibility and elevation."
-   - "The active state uses `border-l-4 border-indigo-500` for clear visual indication."
-
-2. **Responsive Design (Section 3)**:
-   - "I implemented a mobile-first strategy where the card defaults to a vertical stack..."
-   - "On desktop, it transitions to a 3-column grid using `md:grid-cols-3`."
-
-3. **Accessibility (Section 4 & 5)**:
-   - "The toggle switch is a native `<button>` with `role='switch'` and `aria-checked` for WAI-ARIA compliance."
-   - "Full keyboard navigation is supported with Space/Enter keys."
-
-4. **Code Quality (Section 7 & 11)**:
-   - "I use derived state to manage the border color based on `isEnabled`."
-   - "TypeScript provides type safety for all props and state."
-
-### 17.2 Key Talking Points by Section
-
-| Section         | Discussion Point                           | Code Reference                     |
-| --------------- | ------------------------------------------ | ---------------------------------- |
-| **Section 2.1** | Visual specifications and Tailwind mapping | Container classes, border states   |
-| **Section 3**   | Mobile-first responsive strategy           | Grid transitions, breakpoints      |
-| **Section 4.1** | Toggle switch accessibility                | ARIA attributes, keyboard handlers |
-| **Section 4.2** | Conditional rendering logic                | Warning indicator visibility       |
-| **Section 6**   | TypeScript props API                       | Interface definition, prop types   |
-| **Section 7**   | State management patterns                  | Derived state, event handlers      |
-
-### 17.3 Demo Scenarios
-
-#### Scenario 1: Show Responsive Behavior
-
-1. Open browser DevTools
-2. Toggle device toolbar
-3. Resize from mobile to desktop
-4. Point out layout transitions at 768px and 640px breakpoints
-
-#### Scenario 2: Demonstrate Accessibility
-
-1. Use keyboard only (Tab, Space, Enter)
-2. Navigate to toggle switch
-3. Toggle the switch with keyboard
-4. Show focus indicators
-
-#### Scenario 3: Explain State Logic
-
-1. Show warning indicator logic (Section 4.2)
-2. Explain conditional rendering
-3. Toggle between states to demonstrate
-
-## 18. Appendix
-
-### 18.1 Example Usage
-
-```tsx
-import { FeatureFlagCard } from './FeatureFlagCard';
-
-function Dashboard() {
-  const handleToggle = (id: string, newState: boolean) => {
-    console.log(`Flag ${id} toggled to ${newState}`);
-    // Update your state management solution here
-  };
-
-  return (
-    <FeatureFlagCard
-      id="feature-1"
-      name="Advanced Analytics"
-      description="Enable advanced analytics dashboard with real-time metrics"
-      isEnabled={true}
-      requiresRestart={true}
-      impact="high"
-      onToggle={handleToggle}
-    />
-  );
-}
+```html
+<base href="/storybook/" />
 ```
 
-### 18.2 Design Tokens
+**Result**:
 
-```javascript
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      spacing: {
-        6: '1.5rem', // 24px
-        4: '1rem', // 16px
-      },
-      borderWidth: {
-        'l-4': '4px',
-      },
-    },
-  },
-};
-```
+- Next.js app at `/`
+- Storybook at `/storybook`
+- Both working from single URL
+
+---
+
+## 📚 Related Documentation
+
+| Document                        | Purpose                              |
+| ------------------------------- | ------------------------------------ |
+| `SPECIFICATION.short.md`        | Quick reference (1 page)             |
+| `SPECIFICATION.extended.md`     | Detailed spec with all sections      |
+| `SPECIFICATION.md`              | Complete spec (this is the full one) |
+| `ACCESSIBILITY-IMPROVEMENTS.md` | 31 violations → 0 walkthrough        |
+| `VERCEL-DEPLOYMENT.md`          | Deployment troubleshooting guide     |
+| `QUICKSTART.md`                 | Getting started guide                |
+| `INTERVIEW-PREPARATION.md`      | Comprehensive interview prep         |
+| `INTERVIEW-CHEAT-SHEET.md`      | Quick talking points reference       |
+
+---
+
+## ✨ Key Achievements
+
+1. **Design Fidelity**: Pixel-perfect translation from spec to code
+2. **Accessibility**: 31 violations → 0 (Siteimprove audit)
+3. **Quality**: 27/27 tests passing, 0 errors/warnings
+4. **Documentation**: 5+ spec documents, Storybook stories
+5. **Deployment**: Production-ready on Vercel with custom pipeline
+6. **Architecture**: Clean, maintainable, single-component approach
+
+---
+
+## 🎓 Learning Outcomes
+
+This project demonstrates:
+
+- **Spec-to-code translation** - Following design systems precisely
+- **Accessibility expertise** - WCAG 2.1 compliance implementation
+- **Responsive design** - Mobile-first with breakpoint strategy
+- **Component architecture** - Pragmatic decisions (avoid premature abstraction)
+- **Testing discipline** - Comprehensive coverage
+- **Build systems** - Custom deployment configuration
+- **Documentation** - Clear, thorough, interview-ready
+
+---
+
+## 💬 Discussion Prompts
+
+Use these to drive conversation during the interview:
+
+1. **"How did you decide on this component structure?"**
+   - Single component vs. multiple smaller ones
+   - YAGNI principle and avoiding premature abstraction
+   - Clear decision documented with rationale
+
+2. **"Walk me through the accessibility fixes"**
+   - Siteimprove audit (31 violations)
+   - Systematic approach to each category
+   - Balance between accessibility and visual design
+
+3. **"How do you handle responsive design?"**
+   - Mobile-first philosophy
+   - Breakpoint strategy
+   - Testing across devices
+
+4. **"What was the deployment challenge?"**
+   - Vercel auto-detection issue
+   - Custom build configuration
+   - Asset path resolution for Storybook
+
+5. **"How would you extend this component?"**
+   - Add grouped flags
+   - Environment-specific toggles
+   - Integration with real API
+   - Dark mode support
+
+---
+
+**Last Updated**: October 12, 2025
+**Ready for Interview**: ✅ Tuesday, October 14, 2025
