@@ -42,7 +42,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="w-[800px] p-8 bg-gray-50">
+      <div className="w-full max-w-[800px] p-8 bg-gray-50">
         <Story />
       </div>
     ),
@@ -161,14 +161,22 @@ export const MultipleFlags: Story = {
 };
 
 /**
- * Mobile viewport demonstration
+ * Mobile viewport demonstration - shows component at actual mobile width
  */
 export const MobileView: Story = {
   parameters: {
     viewport: {
-      defaultViewport: 'mobile1',
+      defaultViewport: 'mobile',
     },
+    layout: 'fullscreen',
   },
+  // Override global decorator to remove fixed width
+  decorators: [],
+  render: (args) => (
+    <div className="min-h-screen bg-gray-50 p-4">
+      <FeatureFlagCard {...args} />
+    </div>
+  ),
   args: {
     name: 'Mobile Feature Flag',
     description:
