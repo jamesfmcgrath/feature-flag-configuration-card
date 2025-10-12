@@ -9,6 +9,8 @@ export default function Home() {
     analytics: false,
     darkMode: true,
     apiV2: false,
+    longName: true,
+    minimal: false,
   });
 
   const handleToggle = (flagKey: string) => (newState: boolean) => {
@@ -81,20 +83,16 @@ export default function Home() {
           <FeatureFlagCard
             name="Super Long Feature Flag Name That Demonstrates Text Truncation Behavior When The Name Exceeds Container Width"
             description="This flag has an extremely long name to demonstrate how the component handles text truncation and overflow scenarios in both mobile and desktop layouts."
-            active={true}
+            active={flags.longName}
             createdAt="2025-10-11"
             updatedAt="2025-10-11"
-            onToggle={(newState) =>
-              console.log('Long name flag toggled:', newState)
-            }
+            onToggle={handleToggle('longName')}
           />
 
           <FeatureFlagCard
             name="Minimal Flag"
-            active={false}
-            onToggle={(newState) =>
-              console.log('Minimal flag toggled:', newState)
-            }
+            active={flags.minimal}
+            onToggle={handleToggle('minimal')}
           />
         </section>
       </div>
