@@ -42,3 +42,6 @@ public/storybook
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Interview
+INTERVIEW*.md

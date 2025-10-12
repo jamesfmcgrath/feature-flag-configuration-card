@@ -1,6 +1,11 @@
 # Documentation
 
-Welcome to the Feature Flag Configuration Card documentation!
+Welcome to the Feature Fl| **Version info?** | [CHANGELOG.md](./CHANGELOG.md) |
+| **Deploy to Vercel?** | [VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md) |
+| **Accessibility audit?** | [ACCESSIBILITY-IMPROVEMENTS.md](./ACCESSIBILITY-IMPROVEMENTS.md) |
+| **Interview prep?** | [INTERVIEW-PREPARATION.md](./INTERVIEW-PREPARATION.md) |
+| **Day-of cheat sheet?** | [INTERVIEW-CHEAT-SHEET.md](./INTERVIEW-CHEAT-SHEET.md) |
+| **Troubleshooting?** | [QUICKSTART.md](./QUICKSTART.md#-troubleshooting) |onfiguration Card documentation!
 
 ## 📚 Documentation Files
 
@@ -19,6 +24,11 @@ Welcome to the Feature Flag Configuration Card documentation!
 - **[CHANGELOG.md](./CHANGELOG.md)** - Version history and compatibility notes
 - **[VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md)** - Deploy app + Storybook to Vercel
 - **[ACCESSIBILITY-IMPROVEMENTS.md](./ACCESSIBILITY-IMPROVEMENTS.md)** - WCAG AAA compliance fixes
+
+### Interview Preparation
+
+- **[INTERVIEW-PREPARATION.md](./INTERVIEW-PREPARATION.md)** - Complete interview prep guide
+- **[INTERVIEW-CHEAT-SHEET.md](./INTERVIEW-CHEAT-SHEET.md)** - Quick reference for interview day
 
 ## 🚀 Quick Links
 
@@ -42,5 +52,5 @@ Welcome to the Feature Flag Configuration Card documentation!
 
 ---
 
-**Last Updated**: October 11, 2025
-**Status**: ✅ Complete
+**Last Updated**: October 12, 2025
+**Status**: ✅ Ready for interview
