@@ -106,9 +106,7 @@ See the **[docs/](./docs/)** directory for complete documentation.
 ### Quick Links
 
 - **[QUICKSTART.md](./docs/QUICKSTART.md)** - Commands, tips, and troubleshooting
-- **[SPECIFICATION.short.md](./docs/SPECIFICATION.short.md)** - Interview walkthrough (1 page)
-- **[SPECIFICATION.extended.md](./docs/SPECIFICATION.extended.md)** - Design-to-code mapping
-- **[SPECIFICATION.md](./docs/SPECIFICATION.md)** - Complete technical specification
+- **[SPECIFICATION.md](./docs/SPECIFICATION.md)** - Technical specification
 - **[CHANGELOG.md](./docs/CHANGELOG.md)** - Version history and compatibility
 
 ### Design System
@@ -190,8 +188,6 @@ npm run test:ci
 
 This project is optimized for Vercel deployment with both the Next.js app and Storybook accessible from a single deployment.
 
-**📘 See [docs/VERCEL-DEPLOYMENT.md](./docs/VERCEL-DEPLOYMENT.md) for comprehensive deployment guide**
-
 ### Quick Deploy
 
 1. Push your code to GitHub
@@ -202,8 +198,8 @@ This project is optimized for Vercel deployment with both the Next.js app and St
 
 After deployment:
 
-- **Main App**: `https://your-project.vercel.app/`
-- **Storybook**: `https://your-project.vercel.app/storybook`
+- **Main App**: `https://feature-flag-configuration-card.vercel.app/`
+- **Storybook**: `https://feature-flag-configuration-card.vercel.app/storybook`
 
 ### Environment Setup
 
