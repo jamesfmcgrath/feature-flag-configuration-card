@@ -50,7 +50,8 @@ export default function SpecificationPage() {
               <div className="flex gap-4 mt-6">
                 <a
                   href="/"
-                  className="inline-flex items-center px-4 py-2 border border-indigo-600 text-sm font-medium rounded-lg text-indigo-600 bg-white hover:bg-indigo-50 transition-colors"
+                  aria-label="View the live demo of the Feature Flag Card component"
+                  className="inline-flex items-center px-4 py-2 border border-indigo-600 text-sm font-medium rounded-lg text-indigo-600 bg-white hover:bg-indigo-50 transition-colors min-h-[44px]"
                 >
                   View Live Demo
                 </a>
@@ -58,7 +59,8 @@ export default function SpecificationPage() {
                   href="/storybook"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                  aria-label="View Storybook documentation in a new tab"
+                  className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors min-h-[44px]"
                 >
                   View Storybook
                 </a>
@@ -278,13 +280,13 @@ export default function SpecificationPage() {
                     <code className="px-2 py-1 bg-white rounded text-indigo-600 font-mono text-xs">
                       Mobile
                     </code>
-                    : &lt; 768px (default, no prefix)
+                    : less than 768px (default, no prefix)
                   </li>
                   <li>
                     <code className="px-2 py-1 bg-white rounded text-indigo-600 font-mono text-xs">
                       Desktop
                     </code>
-                    : ≥ 768px (
+                    : 768px and above (
                     <code className="text-indigo-600 font-mono text-xs">
                       md:
                     </code>{' '}
@@ -294,7 +296,7 @@ export default function SpecificationPage() {
                     <code className="px-2 py-1 bg-white rounded text-indigo-600 font-mono text-xs">
                       Footer
                     </code>
-                    : ≥ 640px (
+                    : 640px and above (
                     <code className="text-indigo-600 font-mono text-xs">
                       sm:
                     </code>{' '}
@@ -306,18 +308,22 @@ export default function SpecificationPage() {
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div className="bg-gray-50 rounded-lg p-6">
                   <h4 className="text-sm font-semibold text-gray-900 mb-3">
-                    Mobile (&lt; 768px)
+                    Mobile (less than 768px)
                   </h4>
-                  <pre className="text-xs text-gray-600 font-mono bg-white p-4 rounded border border-gray-200 overflow-x-auto">
-                    {`┌─────────────────────┐
-│ [Name]              │
-│ [Description]       │
-│ [Toggle - Full]     │
-│ ─────────────────── │
-│ [Status Badge]      │
-│ [Created Date]      │
-└─────────────────────┘`}
-                  </pre>
+                  <div
+                    className="text-xs text-gray-700 font-mono bg-white p-4 rounded border border-gray-200 overflow-x-auto"
+                    role="img"
+                    aria-label="Mobile layout diagram showing vertical stack: Name, Description, Toggle, Status Badge, and Created Date"
+                  >
+                    <div>┌─────────────────────┐</div>
+                    <div>│ [Name] │</div>
+                    <div>│ [Description] │</div>
+                    <div>│ [Toggle - Full] │</div>
+                    <div>│ ─────────────────── │</div>
+                    <div>│ [Status Badge] │</div>
+                    <div>│ [Created Date] │</div>
+                    <div>└─────────────────────┘</div>
+                  </div>
                   <p className="text-sm text-gray-600 mt-3">
                     <strong>Implementation:</strong> Vertical stack with{' '}
                     <code className="text-indigo-600 font-mono text-xs">
@@ -328,16 +334,20 @@ export default function SpecificationPage() {
 
                 <div className="bg-gray-50 rounded-lg p-6">
                   <h4 className="text-sm font-semibold text-gray-900 mb-3">
-                    Desktop (≥ 768px)
+                    Desktop (768px and above)
                   </h4>
-                  <pre className="text-xs text-gray-600 font-mono bg-white p-4 rounded border border-gray-200 overflow-x-auto">
-                    {`┌──────────────────────────────┐
-│ [Name]          [Toggle]     │
-│ [Description]                │
-│ ──────────────────────────── │
-│ [Status]    [Created Date]   │
-└──────────────────────────────┘`}
-                  </pre>
+                  <div
+                    className="text-xs text-gray-700 font-mono bg-white p-4 rounded border border-gray-200 overflow-x-auto"
+                    role="img"
+                    aria-label="Desktop layout diagram showing horizontal layout with Name, Toggle on the right, Description below, and Status with Created Date in footer"
+                  >
+                    <div>┌──────────────────────────────┐</div>
+                    <div>│ [Name] [Toggle] │</div>
+                    <div>│ [Description] │</div>
+                    <div>│ ──────────────────────────── │</div>
+                    <div>│ [Status] [Created Date] │</div>
+                    <div>└──────────────────────────────┘</div>
+                  </div>
                   <p className="text-sm text-gray-600 mt-3">
                     <strong>Implementation:</strong> Flexible grid with{' '}
                     <code className="text-indigo-600 font-mono text-xs">

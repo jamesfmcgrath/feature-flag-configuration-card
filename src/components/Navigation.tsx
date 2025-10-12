@@ -19,14 +19,15 @@ export function Navigation() {
           <div className="flex items-center space-x-8">
             <Link
               href="/"
-              className="text-xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors"
+              aria-label="Feature Flag Card home page"
+              className="text-xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors min-h-[44px] flex items-center"
             >
               Feature Flag Card
             </Link>
             <div className="hidden md:flex space-x-1">
               {links.map((link) => {
                 const isActive = pathname === link.href;
-                const className = `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                const className = `px-4 py-2 rounded-lg text-sm font-medium transition-colors min-h-[44px] flex items-center ${
                   isActive
                     ? 'bg-indigo-50 text-indigo-700'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
@@ -39,6 +40,7 @@ export function Navigation() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${link.label} - opens in new tab`}
                       className={className}
                     >
                       {link.label}
@@ -47,7 +49,12 @@ export function Navigation() {
                 }
 
                 return (
-                  <Link key={link.href} href={link.href} className={className}>
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-label={link.label}
+                    className={className}
+                  >
                     {link.label}
                   </Link>
                 );
@@ -58,7 +65,8 @@ export function Navigation() {
             href="https://github.com/jamesfmcgrath/feature-flag-configuration-card"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-600 hover:text-gray-900 transition-colors"
+            aria-label="View source code on GitHub"
+            className="text-gray-600 hover:text-gray-900 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
           >
             <svg
               className="w-6 h-6"
