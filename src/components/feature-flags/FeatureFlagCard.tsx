@@ -118,33 +118,39 @@ export function FeatureFlagCard({
               // Minimum 44×44px tap target for accessibility
               'min-w-[44px] min-h-[44px]',
               'inline-flex items-center justify-center',
-              // Focus styles - High visibility
-              'focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 rounded-full',
+              // Focus styles - Cleaner with offset
+              'focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-4 rounded-full',
               // Remove default button styles
-              'bg-transparent border-0 cursor-pointer'
+              'bg-transparent border-0 cursor-pointer',
+              // Smooth transition
+              'transition-all duration-200'
             )}
           >
             <span className="sr-only">
               {active ? 'Disable' : 'Enable'} {name}
             </span>
-            {/* Visual toggle (36×64px, centered in 44×44px hit area) */}
+            {/* Visual toggle - iOS-like design */}
             <span
               className={clsx(
-                'relative inline-flex h-9 w-16 items-center rounded-full',
-                'transition-colors duration-150 ease-in-out',
-                // Background color based on state - AAA contrast
-                active ? 'bg-indigo-700' : 'bg-gray-600',
-                // Hover styles
-                'hover:opacity-90'
+                'relative inline-flex h-8 w-14 items-center rounded-full',
+                'transition-all duration-200 ease-in-out',
+                // Green for active (iOS pattern), gray for inactive
+                active
+                  ? 'bg-green-500 hover:bg-green-600'
+                  : 'bg-gray-300 hover:bg-gray-400',
+                // Inner shadow for depth
+                'shadow-inner'
               )}
             >
-              {/* Toggle thumb */}
+              {/* Toggle thumb - white circle with subtle ring */}
               <span
                 className={clsx(
                   'inline-block h-6 w-6 rounded-full bg-white',
-                  'transition-transform duration-150 ease-in-out',
-                  'shadow-md',
-                  active ? 'translate-x-8' : 'translate-x-1.5'
+                  'transition-all duration-200 ease-in-out',
+                  // Enhanced shadow and subtle ring for depth
+                  'shadow-md ring-1 ring-gray-200',
+                  // Smooth positioning
+                  active ? 'translate-x-[30px]' : 'translate-x-[4px]'
                 )}
               />
             </span>
