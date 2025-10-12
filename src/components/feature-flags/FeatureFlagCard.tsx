@@ -115,29 +115,39 @@ export function FeatureFlagCard({
             onClick={handleToggle}
             onKeyDown={handleKeyDown}
             className={clsx(
-              // Base styles - Balanced size for accessibility (36px height)
-              'relative inline-flex h-9 w-16 items-center rounded-full',
-              'transition-colors duration-150 ease-in-out',
+              // Minimum 44×44px tap target for accessibility
+              'min-w-[44px] min-h-[44px]',
+              'inline-flex items-center justify-center',
               // Focus styles - High visibility
-              'focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2',
-              // Background color based on state - AAA contrast
-              active ? 'bg-indigo-700' : 'bg-gray-600',
-              // Hover styles
-              'hover:opacity-90'
+              'focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 rounded-full',
+              // Remove default button styles
+              'bg-transparent border-0 cursor-pointer'
             )}
           >
             <span className="sr-only">
               {active ? 'Disable' : 'Enable'} {name}
             </span>
-            {/* Toggle thumb */}
+            {/* Visual toggle (36×64px, centered in 44×44px hit area) */}
             <span
               className={clsx(
-                'inline-block h-6 w-6 rounded-full bg-white',
-                'transition-transform duration-150 ease-in-out',
-                'shadow-md',
-                active ? 'translate-x-8' : 'translate-x-1.5'
+                'relative inline-flex h-9 w-16 items-center rounded-full',
+                'transition-colors duration-150 ease-in-out',
+                // Background color based on state - AAA contrast
+                active ? 'bg-indigo-700' : 'bg-gray-600',
+                // Hover styles
+                'hover:opacity-90'
               )}
-            />
+            >
+              {/* Toggle thumb */}
+              <span
+                className={clsx(
+                  'inline-block h-6 w-6 rounded-full bg-white',
+                  'transition-transform duration-150 ease-in-out',
+                  'shadow-md',
+                  active ? 'translate-x-8' : 'translate-x-1.5'
+                )}
+              />
+            </span>
           </button>
         </div>
       </div>
