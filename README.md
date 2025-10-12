@@ -7,7 +7,7 @@ A production-ready, accessible React component for managing feature flag states 
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4+-38bdf8)
 ![Storybook](https://img.shields.io/badge/Storybook-8.4-ff4785)
 
-## 📋 Overview
+## Overview
 
 This project demonstrates high-fidelity translation of design specifications into production-ready code. The Feature Flag Configuration Card component showcases:
 
@@ -17,7 +17,7 @@ This project demonstrates high-fidelity translation of design specifications int
 - **Testing**: Comprehensive Jest + React Testing Library tests
 - **Documentation**: Interactive Storybook playground with controls
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -47,7 +47,7 @@ npm run storybook
 
 > **Note**: This project uses Storybook 8.4.7 for compatibility with Next.js 15. If you encounter webpack errors, ensure you're using the correct versions specified in `package.json`.
 
-## 📚 Available Commands
+## Available Commands
 
 | Command                   | Description                                   |
 | ------------------------- | --------------------------------------------- |
@@ -62,7 +62,7 @@ npm run storybook
 | `npm run storybook`       | Start Storybook on port 6006                  |
 | `npm run build-storybook` | Build static Storybook                        |
 
-## 🎨 Component API
+## Component API
 
 ### Props
 
@@ -99,7 +99,7 @@ function Dashboard() {
 }
 ```
 
-## 📚 Documentation
+## Documentation
 
 See the **[docs/](./docs/)** directory for complete documentation.
 
@@ -132,9 +132,9 @@ The component follows a strict design system:
 - ✅ Full keyboard navigation (Tab, Space, Enter)
 - ✅ Visible focus indicators
 - ✅ WCAG 2.1 AA color contrast ratios
-- ✅ Respects `prefers-reduced-motion`
+- Respects `prefers-reduced-motion`
 
-## 🧪 Testing
+## Testing
 
 The component includes comprehensive tests covering:
 
@@ -153,7 +153,7 @@ npm test
 npm run test:ci
 ```
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 .
@@ -184,7 +184,7 @@ npm run test:ci
 └── README.md
 ```
 
-## 🚢 Vercel Deployment
+## Vercel Deployment
 
 This project is optimized for Vercel deployment with both the Next.js app and Storybook accessible from a single deployment.
 
@@ -205,7 +205,7 @@ After deployment:
 
 No environment variables required for the demo. The component works out of the box.
 
-## 🎯 Design Decisions
+## Design Decisions
 
 ### Why These Technologies?
 
@@ -233,7 +233,7 @@ Every interactive element is keyboard accessible:
 - Semantic HTML for screen readers
 - Proper ARIA labels for context
 
-## 🔧 Development Tips
+## Development Tips
 
 ### Adding New States
 
@@ -262,7 +262,7 @@ npm test
 # Tests include ARIA attribute validation
 ```
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Storybook Webpack Errors
 
@@ -276,7 +276,7 @@ npm install
 
 The project uses Storybook 8.4.7 for compatibility with Next.js 15. Auto-upgrading to newer Storybook versions may cause webpack bundling conflicts.
 
-## 📦 Dependencies
+## Dependencies
 
 ### Core
 
@@ -296,7 +296,7 @@ The project uses Storybook 8.4.7 for compatibility with Next.js 15. Auto-upgradi
 - `eslint` - Code linting
 - `prettier` - Code formatting
 
-## 🤝 Contributing
+## Contributing
 
 This is a demonstration project, but contributions are welcome!
 
@@ -307,17 +307,17 @@ This is a demonstration project, but contributions are welcome!
 5. Ensure all tests pass
 6. Submit a pull request
 
-## 📄 License
+## License
 
 MIT License - feel free to use this component in your projects.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Design system inspired by modern SaaS applications
 - Accessibility patterns from [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
 - Built with best practices from the React and Next.js communities
 
-## 📞 Support
+## Support
 
 For questions or issues:
 
@@ -328,6 +328,6 @@ For questions or issues:
 
 ---
 
-**Built with ❤️ by James F. McGrath**
+**Built by James F. McGrath**
 
 _Demonstrating production-ready React component development_
