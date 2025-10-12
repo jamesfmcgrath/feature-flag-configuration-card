@@ -12,10 +12,10 @@ An accessible React component for managing feature flag states in SaaS dashboard
 This project demonstrates high-fidelity translation of design specifications into working code. The Feature Flag Configuration Card component showcases:
 
 - **Design System Fidelity**: Pixel-perfect implementation matching design specifications
-- **Accessibility**: WCAG 2.1 AA compliant with full keyboard navigation
-- **Responsiveness**: Mobile-first design that adapts seamlessly across viewports
-- **Testing**: Comprehensive Jest + React Testing Library tests
-- **Documentation**: Interactive Storybook playground with controls
+- **Accessibility**: WCAG 2.1 AA compliant with full keyboard navigation and ARIA attributes
+- **Responsiveness**: Mobile-first design that adapts seamlessly across viewports (mobile/desktop layouts)
+- **Testing**: 27 comprehensive tests with 100% passing rate
+- **Documentation**: 8 Storybook stories with interactive controls and examples
 
 ## Quick Start
 
@@ -38,12 +38,25 @@ npm run dev
 
 ### Storybook
 
+Explore **8 interactive stories** demonstrating different component states:
+
 ```bash
-# Run Storybook
+# Run Storybook locally
 npm run storybook
 
 # Open http://localhost:6006
 ```
+
+**Available Stories**:
+
+- **Default**: Active flag with full metadata
+- **Inactive**: Inactive flag state
+- **Long Name**: Text truncation demonstration
+- **With Dates**: Creation and update timestamps
+- **Minimal**: Only name and active state (no description)
+- **Active No Dates**: Active flag without timestamps
+- **Multiple Flags**: Stacked list view
+- **Mobile View**: Mobile viewport demonstration
 
 > **Note**: This project uses Storybook 8.4.7 for compatibility with Next.js 15. If you encounter webpack errors, ensure you're using the correct versions specified in `package.json`.
 
@@ -106,52 +119,85 @@ See the **[docs/](./docs/)** directory for complete documentation.
 ### Quick Links
 
 - **[QUICKSTART.md](./docs/QUICKSTART.md)** - Commands, tips, and troubleshooting
-- **[SPECIFICATION.md](./docs/SPECIFICATION.md)** - Technical specification
-- **[CHANGELOG.md](./docs/CHANGELOG.md)** - Version history and compatibility
+- **[SPECIFICATION.md](./docs/SPECIFICATION.md)** - Complete technical specification with design-to-code mapping
+- **[INTERVIEW-SPEC.md](./docs/INTERVIEW-SPEC.md)** - Interview presentation guide (17 min demo structure)
+- **[CHANGELOG.md](./docs/CHANGELOG.md)** - Version history and compatibility notes
 
 ### Design System
 
-The component follows a strict design system:
+The component follows a strict design system with high-fidelity implementation:
 
-- **Container**: White background with `shadow-xl` and `rounded-xl` borders
-- **State Borders**: 4px left border (Indigo-500 for active, Gray-200 for inactive)
-- **Typography**: Semibold titles, muted metadata text
-- **Spacing**: Consistent padding using 8px grid system (`p-4 md:p-6`)
-- **Animations**: Smooth 150ms transitions for state changes
+- **Container**: White background (`bg-white`) with `shadow-xl` and `rounded-xl` borders
+- **State Borders**: 4px left border (`border-l-4`)
+  - Active: `border-indigo-600` (Indigo 600)
+  - Inactive: `border-gray-400` (Gray 400)
+- **Toggle Switch**: iOS-style design
+  - Active: `bg-green-500` with `hover:bg-green-600`
+  - Inactive: `bg-gray-300` with `hover:bg-gray-400`
+  - Thumb: White circle with `shadow-md` and `ring-1 ring-gray-200`
+- **Status Badge**: Bold text on dark background
+  - Active: `bg-green-800 text-white`
+  - Inactive: `bg-gray-800 text-white`
+- **Typography**:
+  - Title: `text-base font-semibold` with truncation
+  - Description: `text-sm text-gray-700` with 2-line clamp
+  - Metadata: `text-sm text-gray-700 font-semibold` labels
+- **Spacing**: Responsive padding using 8px grid (`p-4 md:p-6`)
+- **Animations**: Smooth 150-200ms transitions for all state changes
 
 ### Responsive Behavior
 
-- **Mobile (< 768px)**: Vertical stack layout with full-width toggle
-- **Desktop (≥ 768px)**: Grid layout with toggle aligned right
-- **Text Handling**: Automatic truncation for long names
+The component uses mobile-first responsive design:
+
+- **Mobile (< 768px)**:
+  - Single column stack layout (`grid-cols-1`)
+  - Content and toggle stack vertically
+  - Toggle aligned to the left
+  - Metadata stacks vertically
+- **Desktop (≥ 768px)**:
+  - Three-column grid (`md:grid-cols-[auto,1fr,auto]`)
+  - Content spans 2 columns, toggle in final column
+  - Toggle aligned to the right (`md:justify-end`)
+  - Metadata displayed in horizontal row
+- **Text Handling**:
+  - Name uses `truncate` (single line with ellipsis)
+  - Description uses `line-clamp-2` (2 lines max)
+  - `min-w-0` prevents grid overflow issues
 
 ### Accessibility Features
 
-- ✅ Semantic HTML (`<article>`, `<h3>`, `<button>`, `<time>`)
-- ✅ ARIA attributes (`role="switch"`, `aria-checked`, `aria-label`)
-- ✅ Full keyboard navigation (Tab, Space, Enter)
-- ✅ Visible focus indicators
-- ✅ WCAG 2.1 AA color contrast ratios
-- Respects `prefers-reduced-motion`
+All accessibility features are thoroughly tested (see `FeatureFlagCard.test.tsx`):
+
+- Semantic HTML (`<article>`, `<h3>`, `<button role="switch">`, `<time>`)
+- ARIA attributes (`role="switch"`, `aria-checked`, `aria-label`)
+- Full keyboard navigation (Tab, Space, Enter)
+- Screen reader support (sr-only text for toggle state)
+- Visible focus indicators with 2px indigo ring and 4px offset
+- WCAG 2.1 AA color contrast ratios (tested visually)
+- 44×44px minimum tap target for touch devices
+- Proper datetime attributes on time elements
 
 ## Testing
 
-The component includes comprehensive tests covering:
+The project includes **27 comprehensive tests** (all passing) covering:
 
-- Rendering with various prop combinations
-- Toggle functionality (mouse and keyboard)
-- ARIA attributes and accessibility
-- Keyboard navigation (Space, Enter keys)
-- Visual states (active/inactive borders)
-- Semantic HTML structure
+- **Rendering**: Various prop combinations, optional dates and descriptions
+- **Status Badge**: Active/Inactive state display
+- **Toggle Functionality**: Mouse clicks and keyboard interactions
+- **Accessibility**: ARIA roles, labels, checked states, screen reader text
+- **Keyboard Navigation**: Space and Enter key handling
+- **Semantic HTML**: Article element, heading levels, time elements
+- **Visual States**: Active/inactive border colors, custom className support
 
 ```bash
-# Run tests
+# Run tests in watch mode
 npm test
 
-# Run tests in CI mode
+# Run tests once (CI mode)
 npm run test:ci
 ```
+
+**Test Results**: 27/27 passing ✓
 
 ## Project Structure
 
@@ -172,11 +218,9 @@ npm run test:ci
 │   └── preview.ts                # Global decorators
 ├── docs/
 │   ├── README.md                 # Documentation index
-│   ├── QUICKSTART.md             # Quick reference guide
-│   ├── SPECIFICATION.short.md    # Interview walkthrough
-│   ├── SPECIFICATION.extended.md # Detailed mapping
-│   ├── SPECIFICATION.md          # Complete technical spec
-│   └── CHANGELOG.md              # Version history
+│   ├── QUICKSTART.md             # Quick reference guide with commands
+│   ├── SPECIFICATION.md          # Complete technical specification min)
+│   └── CHANGELOG.md              # Version history and compatibility
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
@@ -196,10 +240,18 @@ This project is optimized for Vercel deployment with both the Next.js app and St
 
 ### Accessing Your Deployment
 
-After deployment:
+After deployment, you'll have two sites available:
 
-- **Main App**: `https://feature-flag-configuration-card.vercel.app/`
-- **Storybook**: `https://feature-flag-configuration-card.vercel.app/storybook`
+- **Main App**: `https://your-project.vercel.app/` - Next.js demo with 6 example flags
+- **Storybook**: `https://your-project.vercel.app/storybook` - Interactive component playground
+
+The build process (`npm run build`) automatically:
+
+1. Builds Storybook to `storybook-static/`
+2. Copies it to `public/storybook/` for Next.js static serving
+3. Builds the Next.js application
+
+This allows both the demo app and Storybook to be deployed from a single Vercel project.
 
 ### Environment Setup
 

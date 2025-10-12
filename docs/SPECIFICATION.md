@@ -8,7 +8,7 @@
 
 ## Overview
 
-This specification documents the implementation of a Feature Flag Configuration Card component built from design requirements. The component provides a visual interface for viewing and toggling feature flag states with emphasis on accessibility, responsive design, and production-ready code quality.
+This specification documents the implementation of a Feature Flag Configuration Card component built from design requirements. The component provides a visual interface for viewing and toggling feature flag states with emphasis on accessibility, responsive design, and code quality.
 
 **Purpose**: Display feature flag status and provide toggle control
 **Type**: Presentational + Interactive Component
@@ -283,7 +283,7 @@ npm run build
 
 ## Path to Production
 
-While this is an interview demonstration project, here's how it could be made production-ready:
+While this is an interview demonstration project, here's how it could be extended for production use:
 
 ### API Integration
 
