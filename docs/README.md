@@ -15,7 +15,8 @@ Welcome to the Feature Fl| **Version info?** | [CHANGELOG.md](./CHANGELOG.md) |
 
 ### Specifications
 
-- **[SPECIFICATION.short.md](./SPECIFICATION.short.md)** - Interview walkthrough (1 page)
+- **[SPECIFICATION.interview.md](./SPECIFICATION.interview.md)** - ⭐ Interview-ready spec (recommended)
+- **[SPECIFICATION.short.md](./SPECIFICATION.short.md)** - Quick reference (1 page)
 - **[SPECIFICATION.extended.md](./SPECIFICATION.extended.md)** - Detailed design-to-code mapping
 - **[SPECIFICATION.md](./SPECIFICATION.md)** - Complete technical specification
 
@@ -38,17 +39,18 @@ Welcome to the Feature Fl| **Version info?** | [CHANGELOG.md](./CHANGELOG.md) |
 
 ## 🎯 Where to Start
 
-| Your Goal                | Start Here                                                       |
-| ------------------------ | ---------------------------------------------------------------- |
-| **New to the project?**  | [QUICKSTART.md](./QUICKSTART.md)                                 |
-| **Setup instructions?**  | [Main README](../README.md)                                      |
-| **Interview prep?**      | [SPECIFICATION.short.md](./SPECIFICATION.short.md)               |
-| **Code review?**         | [SPECIFICATION.extended.md](./SPECIFICATION.extended.md)         |
-| **Technical deep dive?** | [SPECIFICATION.md](./SPECIFICATION.md)                           |
-| **Version info?**        | [CHANGELOG.md](./CHANGELOG.md)                                   |
-| **Deploy to Vercel?**    | [VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md)                   |
-| **Accessibility audit?** | [ACCESSIBILITY-IMPROVEMENTS.md](./ACCESSIBILITY-IMPROVEMENTS.md) |
-| **Troubleshooting?**     | [QUICKSTART.md](./QUICKSTART.md#-troubleshooting)                |
+| Your Goal                  | Start Here                                                       |
+| -------------------------- | ---------------------------------------------------------------- |
+| **New to the project?**    | [QUICKSTART.md](./QUICKSTART.md)                                 |
+| **Setup instructions?**    | [Main README](../README.md)                                      |
+| **Interview walkthrough?** | [SPECIFICATION.interview.md](./SPECIFICATION.interview.md) ⭐    |
+| **Quick spec reference?**  | [SPECIFICATION.short.md](./SPECIFICATION.short.md)               |
+| **Code review?**           | [SPECIFICATION.extended.md](./SPECIFICATION.extended.md)         |
+| **Technical deep dive?**   | [SPECIFICATION.md](./SPECIFICATION.md)                           |
+| **Version info?**          | [CHANGELOG.md](./CHANGELOG.md)                                   |
+| **Deploy to Vercel?**      | [VERCEL-DEPLOYMENT.md](./VERCEL-DEPLOYMENT.md)                   |
+| **Accessibility audit?**   | [ACCESSIBILITY-IMPROVEMENTS.md](./ACCESSIBILITY-IMPROVEMENTS.md) |
+| **Troubleshooting?**       | [QUICKSTART.md](./QUICKSTART.md#-troubleshooting)                |
 
 ---
 
