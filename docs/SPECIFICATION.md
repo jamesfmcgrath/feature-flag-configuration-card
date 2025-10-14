@@ -68,7 +68,7 @@ This table shows the exact translation from design specification to Tailwind CSS
 │ [Name]                  │
 │ [Description]           │
 │ [Toggle - Full Width]   │
-│ ───────────────────────│
+│ ─────────────────────── │
 │ [Status Badge]          │
 │ [Created Date]          │
 └─────────────────────────┘
@@ -82,8 +82,8 @@ This table shows the exact translation from design specification to Tailwind CSS
 ┌───────────────────────────────────────┐
 │ [Name]                   [Toggle]     │
 │ [Description]                         │
-│ ─────────────────────────────────────│
-│ [Status]           [Created Date]    │
+│ ───────────────────────────────────── │
+│ [Status]           [Created Date]     │
 └───────────────────────────────────────┘
 ```
 
