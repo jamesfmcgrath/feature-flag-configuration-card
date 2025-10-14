@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'A production-ready feature flag configuration card component that demonstrates high-fidelity design-to-code translation. Implements WCAG 2.1 AA accessibility standards with full keyboard navigation and responsive design.',
+          'A feature flag configuration card component that demonstrates high-fidelity design-to-code translation. Implements WCAG 2.1 AA accessibility standards with full keyboard navigation and responsive design.',
       },
     },
   },
