@@ -42,7 +42,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="w-full max-w-[800px] p-8 bg-gray-50">
+      <div className="w-full md:min-w-[800px] p-8 bg-gray-50">
         <Story />
       </div>
     ),
@@ -168,15 +168,15 @@ export const MobileView: Story = {
     viewport: {
       defaultViewport: 'mobile',
     },
-    layout: 'fullscreen',
+    layout: 'padded',
   },
-  // Override global decorator to remove fixed width
-  decorators: [],
-  render: (args) => (
-    <div className="min-h-screen bg-gray-50 p-4">
-      <FeatureFlagCard {...args} />
-    </div>
-  ),
+  decorators: [
+    (Story) => (
+      <div className="w-full p-4 bg-gray-50">
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     name: 'Mobile Feature Flag',
     description:
